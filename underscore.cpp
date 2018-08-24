@@ -80,10 +80,40 @@ Iterator find_if_not(Iterator begin, Iterator end, Predicate predicate)
 		{
 			return begin;
 		}
+		begin++;
 	}
 
 	return end;
 }
 
+template <typename Iterator, typename Predicate>
+bool every(Iterator begin, Iterator end, Predicate predicate)
+{
+	while(begin != end)
+	{
+		if(predicate(*begin) == false)
+			return false;
+		begin++;
+	}
+
+	return true;	
+}
+
+template <typename Container>
+typename Container::iterator max(Container container)
+{
+	if(container.begin() == container.end())
+		return container.end();
+
+	typename Container::iterator max = container.begin();
+
+	for(typename Container::iterator it = container.begin(); it != container.end(); ++it)
+	{
+		if((*max) < (*it))
+			max = it;
+	}
+
+	return max;
+}
 
 }
