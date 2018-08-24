@@ -11,3 +11,6 @@ Collection filter_accept(Collection &collection, Function function);
 
 template <typename Collection, typename Function>
 Collection filter_reject(Collection &collection, Function function);
+
+template <typename Iterator, typename Predicate>
+Iterator find_if(Iterator begin, Iterator end, Predicate predicate);

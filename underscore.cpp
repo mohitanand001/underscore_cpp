@@ -53,3 +53,18 @@ Collection filter_reject(Collection &collection, Function function)
 	}
 	return result;
 }
+
+template <typename Iterator, typename Predicate>
+Iterator find_if(Iterator begin, Iterator end, Predicate predicate)
+{
+	while(begin != end)
+	{
+		if(predicate(*begin))
+		{
+			return begin;
+		}
+		begin++;
+	}
+
+	return end;
+}
