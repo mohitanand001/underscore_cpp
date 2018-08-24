@@ -14,3 +14,6 @@ Collection filter_reject(Collection &collection, Function function);
 
 template <typename Iterator, typename Predicate>
 Iterator find_if(Iterator begin, Iterator end, Predicate predicate);
+
+template <typename Iterator, typename Predicate>
+Iterator find_if_not(Iterator begin, Iterator end, Predicate predicate);

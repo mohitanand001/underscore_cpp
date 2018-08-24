@@ -1,5 +1,7 @@
 #include "underscore.hpp"
 
+namespace underscore{
+
 
 template <typename Iterator, typename Function>
 void each(Iterator begin, Iterator end, Function function)
@@ -67,4 +69,21 @@ Iterator find_if(Iterator begin, Iterator end, Predicate predicate)
 	}
 
 	return end;
+}
+
+template <typename Iterator, typename Predicate>
+Iterator find_if_not(Iterator begin, Iterator end, Predicate predicate)
+{
+	while(begin != end)
+	{
+		if(!predicate(*begin))
+		{
+			return begin;
+		}
+	}
+
+	return end;
+}
+
+
 }
