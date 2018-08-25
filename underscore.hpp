@@ -21,6 +21,9 @@ Iterator find_if_not(Iterator begin, Iterator end, Predicate predicate);
 template <typename Iterator, typename Predicate>
 bool every(Iterator begin, Iterator end, Predicate predicate);
 
+template <typename Iterator, typename Predicate>
+bool any(Iterator begin, Iterator end, Predicate predicate);
+
 template <typename Container>
 typename Container::iterator max(Container container);
 

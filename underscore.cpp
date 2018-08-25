@@ -99,6 +99,20 @@ bool every(Iterator begin, Iterator end, Predicate predicate)
 	return true;	
 }
 
+template <typename Iterator, typename Predicate>
+bool any(Iterator begin, Iterator end, Predicate predicate)
+{
+	while(begin != end)
+	{
+		if(predicate(*begin))
+			return true;
+		
+		begin++;
+	}
+
+	return false;
+}
+
 template <typename Container>
 typename Container::iterator max(Container container)
 {
