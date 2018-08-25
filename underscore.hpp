@@ -26,6 +26,9 @@ typename Container::iterator max(Container container);
 
 template <typename Iterator, typename Predicate>
 int count_by(Iterator begin, Iterator end, Predicate predicate);
+<<<<<<< HEAD
 
 template <typename Iterator, typename Data>
 bool contains(Iterator begin, Iterator end, Data data);
+=======
+>>>>>>> 1c946b87877f8dd07ca751947442c4ceb7c7351e
