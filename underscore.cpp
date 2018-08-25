@@ -116,4 +116,31 @@ typename Container::iterator max(Container container)
 	return max;
 }
 
+template <typename Iterator, typename Predicate>
+int count_by(Iterator begin, Iterator end, Predicate predicate)
+{
+	int count = 0;
+	while(begin != end)
+	{
+		if(predicate(*begin))
+		{
+			count++;
+		}
+		begin++;
+	}
+	return count;	
+}
+
+template <typename Iterator, typename Data>
+bool contains(Iterator begin, Iterator end, Data data)
+{
+	while(begin != end)
+	{
+		if(*begin == data)
+			return true;
+		begin++;
+	}
+	return false;
+}
+
 }
