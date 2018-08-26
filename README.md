@@ -15,3 +15,8 @@ Implementation of: <br>
 7. every
 8. max
 9. count_by
+
+## SETUP
+1. Clone the project using `git clone https://github.com/farziengineer/underscore_cpp` 
+2. To run the project you can individually compile the files(.cpp) and link them, or just run the bash file `runn.sh` 
+   using `bash runn.sh (on Linux)`. 
