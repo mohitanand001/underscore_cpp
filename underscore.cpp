@@ -1,5 +1,5 @@
 #include "underscore.hpp"
-
+#include <cstddef>
 namespace underscore{
 
 
@@ -133,7 +133,7 @@ typename Container::iterator max(Container container)
 template <typename Iterator, typename Predicate>
 int count_by(Iterator begin, Iterator end, Predicate predicate)
 {
-	int count = 0;
+	size_t count = 0;
 	while(begin != end)
 	{
 		if(predicate(*begin))
