@@ -6,15 +6,16 @@ Inspired by underscore.js <br>
 └─┘┘└┘─┴┘└─┘┴└─└─┘└─┘└─┘┴└─└─┘────└─┘┴  ┴  
 </pre>
 Implementation of: <br> 
-1. each
-2. transform
-3. filter_accept
-4. filter_reject
-5. find_if
-6. find_if_not
-7. every
-8. max
-9. count_by
+- [x] each
+- [x] transform
+- [x] filter_accept
+- [x] filter_reject
+- [x]  find_if
+- [x]  find_if_not
+- [x]  every
+- [x]  count_by
+- [ ] max
+- [ ] min
 
 ## SETUP
 1. Clone the project using `git clone https://github.com/farziengineer/underscore_cpp` 
