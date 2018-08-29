@@ -1,5 +1,8 @@
 #include<iostream>
 #include<vector>
+#include<map>
+#include<algorithm>
+#include <bits/stdc++.h>
 #include "underscore.cpp"
 
 void display(int x)
@@ -27,6 +30,20 @@ int main()
 {
 	std::vector<int> vec = {1, 2, 45}; 
 	std::vector<int> lec;
+	std::map<int, int> mp; 
+	mp[1] = 3, mp[2] = 21;
+	std::pair<const int, int> p {1, 3} ;
+	std::unordered_set<int> s; s.insert(1); s.insert(2); s.insert(23);
+	std::cout << underscore::contains(s.begin(), s.end(), 1212);
+
+	std::cout << underscore::contains(mp.begin(), mp.end(), p);
+	// auto x = std::find(mp.begin(), mp.end(), p) != mp.end();
+	// std::cout << x << std::endl;
+	// std::cout << x << std::endl;
+
+
+	// std::cout << contains(vec.begin(), vec.end(), 1);
+
 	// each(vec.begin(), vec.end(), display);
 	// each(vec.begin(), vec.end(), incr);
 	// each(vec.begin(), vec.end(), display);
@@ -46,4 +63,4 @@ int main()
 	// std::cout << std::endl;
 
 	return 0;
-}
+}	
