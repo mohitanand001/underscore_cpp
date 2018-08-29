@@ -33,3 +33,5 @@ int count_by(Iterator begin, Iterator end, Predicate predicate);
 template <typename Iterator, typename Data>
 bool contains(Iterator begin, Iterator end, Data data);
 
+template <typename Iterator, typename Data, typename X, typename Y>
+bool contains(Iterator begin, Iterator end, std::pair<X, Y> p);

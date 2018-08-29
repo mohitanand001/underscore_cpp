@@ -1,5 +1,6 @@
 #include "underscore.hpp"
 #include <cstddef>
+#include <algorithm>
 namespace underscore{
 
 
@@ -154,7 +155,29 @@ bool contains(Iterator begin, Iterator end, Data data)
 			return true;
 		begin++;
 	}
+
 	return false;
+
 }
+
+
+template <typename Iterator, typename Data, typename X, typename Y>
+bool contains(Iterator begin, Iterator end, std::pair<X, Y> p)
+{
+
+	while(begin != end)
+	{
+
+		if((*begin).first == p.first and (*begin).second == p.second)
+			return true;
+		begin++;
+	}
+
+	return false;
+
+}
+
+
+
 
 }
