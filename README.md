@@ -16,6 +16,7 @@ Implementation of: <br>
 - [x]  count_by
 - [ ] max
 - [ ] min
+- [x] contains
 
 ## SETUP
 1. Clone the project using `git clone https://github.com/farziengineer/underscore_cpp` 
