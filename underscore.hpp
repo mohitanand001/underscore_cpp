@@ -27,6 +27,9 @@ bool any(Iterator begin, Iterator end, Predicate predicate);
 template <typename Container>
 typename Container::iterator max(Container container);
 
+template <typename Container>
+typename Container::iterator min(Container container);
+
 template <typename Iterator, typename Predicate>
 int count_by(Iterator begin, Iterator end, Predicate predicate);
 
