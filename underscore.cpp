@@ -131,6 +131,23 @@ typename Container::iterator max(Container &container)
 	return max;
 }
 
+template <typename Container>
+typename Container::iterator min(Container &container)
+{
+	if(container.begin() == container.end())
+		return container.end();
+
+	typename Container::iterator min = container.begin();
+
+	for(typename Container::iterator it = ++container.begin(); it != container.end(); ++it)
+	{
+		if((*min) > (*it))
+			min = it;
+	}
+
+	return min;
+}
+
 template <typename Iterator, typename Predicate>
 int count_by(Iterator begin, Iterator end, Predicate predicate)
 {
