@@ -132,7 +132,7 @@ typename Container::iterator max(Container container)
 }
 
 template <typename Container>
-typename Container::iterator min(Container container)
+typename Container::iterator min(Container &container)
 {
 	if(container.begin() == container.end())
 		return container.end();
