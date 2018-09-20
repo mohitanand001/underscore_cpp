@@ -115,14 +115,14 @@ bool any(Iterator begin, Iterator end, Predicate predicate)
 }
 
 template <typename Container>
-typename Container::iterator max(Container container)
+typename Container::iterator max(Container &container)
 {
 	if(container.begin() == container.end())
 		return container.end();
 
 	typename Container::iterator max = container.begin();
 
-	for(typename Container::iterator it = container.begin(); it != container.end(); ++it)
+	for(typename Container::iterator it = ++container.begin(); it != container.end(); ++it)
 	{
 		if((*max) < (*it))
 			max = it;
