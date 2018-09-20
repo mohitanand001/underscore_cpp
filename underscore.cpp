@@ -1,6 +1,6 @@
-#include "underscore.hpp"
 #include <cstddef>
 #include <algorithm>
+#include "underscore.hpp"
 namespace underscore{
 
 
@@ -115,7 +115,7 @@ bool any(Iterator begin, Iterator end, Predicate predicate)
 }
 
 template <typename Container>
-typename Container::iterator max(Container container)
+typename Container::iterator max(Container &container)
 {
 	if(container.begin() == container.end())
 		return container.end();
