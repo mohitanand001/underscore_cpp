@@ -35,8 +35,10 @@ int main()
 	std::pair<const int, int> p {1, 3} ;
 	std::unordered_set<int> s; s.insert(1); s.insert(2); s.insert(23);
 	std::cout << underscore::contains(s.begin(), s.end(), 1212);
-
 	std::cout << underscore::contains(mp.begin(), mp.end(), p);
+	std::vector<int> v ={0,2,1};
+	std::cout << underscore::max(v) - v.begin();
+	std::cout << *underscore::max(v);
 	// auto x = std::find(mp.begin(), mp.end(), p) != mp.end();
 	// std::cout << x << std::endl;
 	// std::cout << x << std::endl;
