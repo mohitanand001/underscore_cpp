@@ -36,7 +36,7 @@ int main()
 	std::unordered_set<int> s; s.insert(1); s.insert(2); s.insert(23);
 	std::cout << underscore::contains(s.begin(), s.end(), 1212);
 	std::cout << underscore::contains(mp.begin(), mp.end(), p);
-	std::vector<int> v ={-999,1,3};
+	std::vector<int> v ={-999};
 	std::cout << underscore::min(v) - v.begin();
 	std::cout << *underscore::min(v);
 	std::cout << underscore::max(v) - v.begin();
