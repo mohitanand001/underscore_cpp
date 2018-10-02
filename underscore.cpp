@@ -209,9 +209,7 @@ Collection intersect(Collection collection1, Collection collection2)
 	sort(collection1.begin(), collection1.end());
 	sort(collection2.begin(), collection2.end());
 
-	typename Collection::iterator	first_begin = collection1.begin(), 
-									second_begin = collection2.begin(), 
-									result_begin = result.begin();
+	typename Collection::const_iterator first_begin = collection1.begin(), second_begin = collection2.begin();
 	
 	while(first_begin != collection1.end() && second_begin != collection2.end()) 
 	{
@@ -239,5 +237,43 @@ Collection intersect(Collection collection1, Collection collection2, Collections
 {
 	return intersect(intersect(collection1, collection2), intersect(others...));
 }
+
+	
+template <typename Collection>
+Collection set_union(Collection collection1)
+{
+	return collection1;
+}
+
+template <typename Collection>
+Collection set_union(Collection collection1, Collection collection2)
+{
+	Collection result = collection1;
+
+	typename Collection::const_iterator first_begin, second_begin;
+	for(second_begin = collection2.begin(); second_begin != collection2.end(); ++second_begin)
+	{
+		for(first_begin = collection1.begin(); first_begin != collection1.end(); ++first_begin)
+		{
+			if(*second_begin == *first_begin)
+			{
+				break;
+			}
+		}
+		if(first_begin == collection1.end())
+		{
+			result.insert(result.end(), *second_begin);
+		}
+	}
+
+	return result;
+}
+
+template <typename Collection, typename ... Collections>
+Collection set_union(Collection collection1, Collection collection2, Collections ... others)
+{
+	return set_union(set_union(collection1, collection2), others...);
+}
+
 
 }

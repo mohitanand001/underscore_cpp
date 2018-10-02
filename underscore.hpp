@@ -41,3 +41,6 @@ bool contains(Iterator begin, Iterator end, std::pair<X, Y> p);
 
 template <typename Collection, typename ... Collections>
 Collection intersect(Collection collection1, Collection collection2, Collections ... others);
+
+template <typename Collection, typename ... Collections>
+Collection set_union(Collection collection1, Collection collection2, Collections ... others);
