@@ -276,4 +276,41 @@ Collection set_union(Collection collection1, Collection collection2, Collections
 }
 
 
+template <typename Collection>
+Collection difference(Collection collection1)
+{
+	return collection1;
+}
+
+template <typename Collection>
+Collection difference(Collection collection1, Collection collection2)
+{
+	Collection result;
+	
+	typename Collection::const_iterator first_begin, second_begin;
+	for(first_begin = collection1.begin(); first_begin != collection1.end(); ++first_begin)
+	{
+		for(second_begin = collection2.begin(); second_begin != collection2.end(); ++second_begin)
+		{
+			if(*first_begin == *second_begin)
+			{
+				break;
+			}
+		}
+		if(second_begin == collection2.end())
+		{
+			result.insert(result.end(), *first_begin);
+		}
+	}
+
+	return result;
+}
+
+template <typename Collection, typename ... Collections>
+Collection difference(Collection collection1, Collection collection2, Collections ... others)
+{
+	return difference(difference(collection1, collection2), others...);
+}
+
+
 }
