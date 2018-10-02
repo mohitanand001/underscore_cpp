@@ -36,11 +36,16 @@ int main()
 	std::unordered_set<int> s; s.insert(1); s.insert(2); s.insert(23);
 	std::cout << underscore::contains(s.begin(), s.end(), 1212);
 	std::cout << underscore::contains(mp.begin(), mp.end(), p);
-	std::vector<int> v ={-999,1,3};
+	std::vector<int> v ={-999,1,3}, c = {1,3,5}, x = {-10,2,-999,3,5, -2};
 	std::cout << underscore::min(v) - v.begin();
 	std::cout << *underscore::min(v);
 	std::cout << underscore::max(v) - v.begin();
-	std::cout << *underscore::max(v);
+	std::cout << *underscore::max(v) << "\n";
+	std::vector<int> result = underscore::set_union(v, c, x);
+	for(auto n : result)
+	{
+		std::cout << n << " ";
+	}
 	// auto x = std::find(mp.begin(), mp.end(), p) != mp.end();
 	// std::cout << x << std::endl;
 	// std::cout << x << std::endl;
