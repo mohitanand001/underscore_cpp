@@ -38,8 +38,13 @@ int main()
 	std::cout << underscore::max(v) - v.begin() << "\n";
 	std::cout << *underscore::max(v) << "\n";
 	std::vector<int> result = underscore::intersect(v, v, c, x);
-	for(int i = 0; i < result.size(); ++i) {
-		std::cout << result[i] << " ";
+	for(auto n : result) {
+		std::cout << n << " ";
+	}
+	result = underscore::set_union(v, c, x);
+	for(auto n : result)
+	{
+		std::cout << n << " ";
 	}
 	// auto x = std::find(mp.begin(), mp.end(), p) != mp.end();
 	// std::cout << x << std::endl;
