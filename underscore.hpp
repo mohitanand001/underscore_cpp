@@ -44,3 +44,6 @@ Collection intersect(Collection collection1, Collection collection2, Collections
 
 template <typename Collection, typename ... Collections>
 Collection set_union(Collection collection1, Collection collection2, Collections ... others);
+
+template <typename Collection, typename ... Collections>
+Collection difference(Collection collection1, Collection collection2, Collections ... other);
