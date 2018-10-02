@@ -1,5 +1,5 @@
 # underscore_cpp
-Inspired by underscore.js <br>
+Inspired by [underscore.js](https://underscorejs.org) <br>
 <pre>
 ┬ ┬┌┐┌┌┬┐┌─┐┬─┐┌─┐┌─┐┌─┐┬─┐┌─┐    ┌─┐┌─┐┌─┐
 │ ││││ ││├┤ ├┬┘└─┐│  │ │├┬┘├┤     │  ├─┘├─┘
