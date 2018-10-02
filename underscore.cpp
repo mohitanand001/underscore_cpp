@@ -209,7 +209,7 @@ Collection intersect(Collection collection1, Collection collection2)
 	sort(collection1.begin(), collection1.end());
 	sort(collection2.begin(), collection2.end());
 
-	typename Collection::iterator first_begin = collection1.begin(), second_begin = collection2.begin();
+	typename Collection::const_iterator first_begin = collection1.begin(), second_begin = collection2.begin();
 	
 	while(first_begin != collection1.end() && second_begin != collection2.end()) 
 	{
@@ -250,7 +250,7 @@ Collection set_union(Collection collection1, Collection collection2)
 {
 	Collection result = collection1;
 
-	typename Collection::iterator first_begin, second_begin;
+	typename Collection::const_iterator first_begin, second_begin;
 	for(second_begin = collection2.begin(); second_begin != collection2.end(); ++second_begin)
 	{
 		for(first_begin = collection1.begin(); first_begin != collection1.end(); ++first_begin)
