@@ -197,5 +197,6 @@ bool contains(Iterator begin, Iterator end, std::pair<X, Y> p)
 template <typename Container>
 typename Container::const_iterator size(const Container &container)
 {
-		return (container.end()-container.begin())
+		return (container.end()-container.begin());
+}
 }
