@@ -195,6 +195,49 @@ bool contains(Iterator begin, Iterator end, std::pair<X, Y> p)
 }
 
 
+template <typename Collection>
+Collection intersect(Collection collection) 
+{
+	return collection;
+}
 
+template <typename Collection>
+Collection intersect(Collection collection1, Collection collection2)
+{
+	Collection result;
+
+	sort(collection1.begin(), collection1.end());
+	sort(collection2.begin(), collection2.end());
+
+	typename Collection::iterator	first_begin = collection1.begin(), 
+									second_begin = collection2.begin(), 
+									result_begin = result.begin();
+	
+	while(first_begin != collection1.end() && second_begin != collection2.end()) 
+	{
+		if(*first_begin == *second_begin) 
+		{
+			result.insert(result.end(), *first_begin);
+			first_begin++;
+			second_begin++;
+		}
+		else if(*first_begin > *second_begin) 
+		{
+			second_begin++;
+		}
+		else 
+		{
+			first_begin++;
+		}
+	}
+
+	return result;
+}
+
+template <typename Collection, typename ... Collections>
+Collection intersect(Collection collection1, Collection collection2, Collections ... others) 
+{
+	return intersect(intersect(collection1, collection2), intersect(others...));
+}
 
 }
