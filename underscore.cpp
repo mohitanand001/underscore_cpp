@@ -29,7 +29,7 @@ void transform(Iterator first_begin, Iterator first_end, Iterator second_begin, 
 template <typename Collection, typename Function>
 Collection filter_accept(Collection &collection, Function function)
 {
-	Collection result; 
+	Collection result;
 	typename Collection::iterator first_begin, result_begin = result.begin();
 	for(first_begin = collection.begin(); first_begin != collection.end(); ++first_begin)
 	{
@@ -97,7 +97,7 @@ bool every(Iterator begin, Iterator end, Predicate predicate)
 		begin++;
 	}
 
-	return true;	
+	return true;
 }
 
 template <typename Iterator, typename Predicate>
@@ -107,7 +107,7 @@ bool any(Iterator begin, Iterator end, Predicate predicate)
 	{
 		if(predicate(*begin))
 			return true;
-		
+
 		begin++;
 	}
 
@@ -160,7 +160,7 @@ int count_by(Iterator begin, Iterator end, Predicate predicate)
 		}
 		begin++;
 	}
-	return count;	
+	return count;
 }
 
 template <typename Iterator, typename Data>
@@ -194,7 +194,9 @@ bool contains(Iterator begin, Iterator end, std::pair<X, Y> p)
 
 }
 
-
-
-
+template <typename Container>
+typename Container::const_iterator size(const Container &container)
+{
+		return (container.end()-container.begin());
+}
 }
