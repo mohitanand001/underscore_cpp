@@ -1,3 +1,7 @@
+#include<iostream>
+#include<vector>
+#include<map>
+#include<algorithm>
 #include <bits/stdc++.h>
 #include "underscore.cpp"
 
@@ -30,16 +34,17 @@ int main()
 	mp[1] = 3, mp[2] = 21;
 	std::pair<const int, int> p {1, 3} ;
 	std::unordered_set<int> s; s.insert(1); s.insert(2); s.insert(23);
-	std::cout << underscore::contains(s.begin(), s.end(), 1212) << "\n";
-	std::cout << underscore::contains(mp.begin(), mp.end(), p) << "\n";
-	std::vector<int> v ={-999,1,3}, c = {-999, 1, 11, 3}, x = {-999, 1, 3, 4, 5};
-	std::cout << underscore::min(v) - v.begin() << "\n";
-	std::cout << *underscore::min(v) << "\n";
-	std::cout << underscore::max(v) - v.begin() << "\n";
+	std::cout << underscore::contains(s.begin(), s.end(), 1212);
+	std::cout << underscore::contains(mp.begin(), mp.end(), p);
+	std::vector<int> v ={-999,1,3}, c = {1,3,5}, x = {-10,2,-999,3,5, -2};
+	std::cout << underscore::min(v) - v.begin();
+	std::cout << *underscore::min(v);
+	std::cout << underscore::max(v) - v.begin();
 	std::cout << *underscore::max(v) << "\n";
-	std::vector<int> result = underscore::intersect(v, v, c, x);
-	for(int i = 0; i < result.size(); ++i) {
-		std::cout << result[i] << " ";
+	std::vector<int> result = underscore::set_union(v, c, x);
+	for(auto n : result)
+	{
+		std::cout << n << " ";
 	}
 	// auto x = std::find(mp.begin(), mp.end(), p) != mp.end();
 	// std::cout << x << std::endl;
