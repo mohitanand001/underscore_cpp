@@ -194,40 +194,30 @@ bool contains(Iterator begin, Iterator end, std::pair<X, Y> p)
 
 }
 
-
 template <typename Collection>
-Collection intersect(Collection collection) 
+Collection set_union(Collection collection1)
 {
-	return collection;
+	return collection1;
 }
 
 template <typename Collection>
-Collection intersect(Collection collection1, Collection collection2)
+Collection set_union(Collection collection1, Collection collection2)
 {
-	Collection result;
+	Collection result = collection1;
 
-	sort(collection1.begin(), collection1.end());
-	sort(collection2.begin(), collection2.end());
-
-	typename Collection::iterator	first_begin = collection1.begin(), 
-									second_begin = collection2.begin(), 
-									result_begin = result.begin();
-	
-	while(first_begin != collection1.end() && second_begin != collection2.end()) 
+	typename Collection::iterator first_begin, second_begin;
+	for(second_begin = collection2.begin(); second_begin != collection2.end(); ++second_begin)
 	{
-		if(*first_begin == *second_begin) 
+		for(first_begin = collection1.begin(); first_begin != collection1.end(); ++first_begin)
 		{
-			result.insert(result.end(), *first_begin);
-			first_begin++;
-			second_begin++;
+			if(*second_begin == *first_begin)
+			{
+				break;
+			}
 		}
-		else if(*first_begin > *second_begin) 
+		if(first_begin == collection1.end())
 		{
-			second_begin++;
-		}
-		else 
-		{
-			first_begin++;
+			result.insert(result.end(), *second_begin);
 		}
 	}
 
@@ -235,9 +225,9 @@ Collection intersect(Collection collection1, Collection collection2)
 }
 
 template <typename Collection, typename ... Collections>
-Collection intersect(Collection collection1, Collection collection2, Collections ... others) 
+Collection set_union(Collection collection1, Collection collection2, Collections ... others)
 {
-	return intersect(intersect(collection1, collection2), intersect(others...));
+	return set_union(set_union(collection1, collection2), others...);
 }
 
 }
