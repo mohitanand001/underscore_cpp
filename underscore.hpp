@@ -43,4 +43,4 @@ template <typename Collection, typename ... Collections>
 Collection intersect(Collection collection1, Collection collection2, Collections ... others);
 
 template <typename Collection, typename ... Collections>
-Collection set_union(Collection collection1, Collection collection2, Collections ... others);
+# Collection set_union(const Collection &collection1, const Collection &collection2, const Collections & ... others);
