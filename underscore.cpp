@@ -294,7 +294,7 @@ Collection set_union(const Collection &collection1, const Collection &collection
 // TODO: Do the above algorithm with all collections provided at once - instead
 // of recursively calling
 template <typename Collection, typename ... Collections>
-Collection set_union(Collection collection1, Collection collection2, Collections ... others)
+Collection set_union(const Collection &collection1, const Collection &collection2, const Collections & ... others)
 {
 	return set_union(set_union(collection1, collection2), others...);
 }
