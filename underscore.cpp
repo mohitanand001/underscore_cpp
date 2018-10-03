@@ -240,13 +240,13 @@ Collection intersect(Collection collection1, Collection collection2, Collections
 
 	
 template <typename Collection>
-Collection set_union(Collection collection1)
+Collection set_union(const Collection &collection1)
 {
 	return collection1;
 }
 
 template <typename Collection>
-Collection set_union(Collection collection1, Collection collection2)
+Collection set_union(const Collection &collection1, const Collection &collection2)
 {
   Collection result;
 
