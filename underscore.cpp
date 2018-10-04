@@ -240,21 +240,20 @@ Collection intersect(Collection collection1, Collection collection2, Collections
 
 	
 template <typename Collection>
-Collection set_union(Collection collection1)
+Collection set_union(const Collection &collection1)
 {
 	return collection1;
 }
 
 template <typename Collection>
-Collection set_union(Collection collection1, Collection collection2)
+Collection set_union(const Collection &collection1, const Collection &collection2)
 {
-	Collection result = collection1;
+  Collection result;
 
 	sort(collection1.begin(), collection1.end());
 	sort(collection2.begin(), collection2.end());
 
 	typename Collection::const_iterator first_begin = collection1.begin(), second_begin = collection2.begin();
-	
 	while(first_begin != collection1.end() && second_begin != collection2.end())
 	{
 		if(*second_begin < *first_begin)
@@ -272,7 +271,7 @@ Collection set_union(Collection collection1, Collection collection2)
 			first_begin++;
 		}
 	}
-
+  
 	while(second_begin != collection2.end())
 	{
 		result.insert(result.end(), *second_begin);
@@ -283,7 +282,7 @@ Collection set_union(Collection collection1, Collection collection2)
 }
 
 template <typename Collection, typename ... Collections>
-Collection set_union(Collection collection1, Collection collection2, Collections ... others)
+Collection set_union(const Collection &collection1, const Collection &collection2, const Collections & ... others)
 {
 	return set_union(set_union(collection1, collection2), others...);
 }
