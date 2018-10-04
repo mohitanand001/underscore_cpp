@@ -24,9 +24,9 @@ bool is_odd(int x)
 
 int main()
 {
-	std::vector<int> vec = {1, 2, 45}; 
+	std::vector<int> vec = {1, 2, 45};
 	std::vector<int> lec;
-	std::map<int, int> mp; 
+	std::map<int, int> mp;
 	mp[1] = 3, mp[2] = 21;
 	std::pair<const int, int> p {1, 3} ;
 	std::unordered_set<int> s; s.insert(1); s.insert(2); s.insert(23);
@@ -37,6 +37,7 @@ int main()
 	std::cout << *underscore::min(v) << "\n";
 	std::cout << underscore::max(v) - v.begin() << "\n";
 	std::cout << *underscore::max(v) << "\n";
+	std::cout <<	underscore::size(v)<<"\n";
 	std::vector<int> result = underscore::intersect(v, v, c, x);
 	for(auto n : result) {
 		std::cout << n << " ";
@@ -46,6 +47,8 @@ int main()
 	{
 		std::cout << n << " ";
 	}
+
+
 	// auto x = std::find(mp.begin(), mp.end(), p) != mp.end();
 	// std::cout << x << std::endl;
 	// std::cout << x << std::endl;
@@ -72,4 +75,4 @@ int main()
 	// std::cout << std::endl;
 
 	return 0;
-}	
+}
