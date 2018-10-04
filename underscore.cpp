@@ -250,20 +250,33 @@ Collection set_union(Collection collection1, Collection collection2)
 {
 	Collection result = collection1;
 
-	typename Collection::const_iterator first_begin, second_begin;
-	for(second_begin = collection2.begin(); second_begin != collection2.end(); ++second_begin)
+	sort(collection1.begin(), collection1.end());
+	sort(collection2.begin(), collection2.end());
+
+	typename Collection::const_iterator first_begin = collection1.begin(), second_begin = collection2.begin();
+	
+	while(first_begin != collection1.end() && second_begin != collection2.end())
 	{
-		for(first_begin = collection1.begin(); first_begin != collection1.end(); ++first_begin)
-		{
-			if(*second_begin == *first_begin)
-			{
-				break;
-			}
-		}
-		if(first_begin == collection1.end())
+		if(*second_begin < *first_begin)
 		{
 			result.insert(result.end(), *second_begin);
+			second_begin++;
+		}		
+		else if(*second_begin == *first_begin)
+		{
+			second_begin++;
+			first_begin++;
 		}
+		else
+		{
+			first_begin++;
+		}
+	}
+
+	while(second_begin != collection2.end())
+	{
+		result.insert(result.end(), *second_begin);
+		second_begin++;
 	}
 
 	return result;
@@ -287,20 +300,40 @@ Collection difference(Collection collection1, Collection collection2)
 {
 	Collection result;
 	
-	typename Collection::const_iterator first_begin, second_begin;
-	for(first_begin = collection1.begin(); first_begin != collection1.end(); ++first_begin)
+	sort(collection1.begin(), collection1.end());
+	sort(collection2.begin(), collection2.end());
+
+	typename Collection::const_iterator first_begin = collection1.begin(), second_begin = collection2.begin();
+	
+	while(first_begin != collection1.end() && second_begin != collection2.end())
 	{
-		for(second_begin = collection2.begin(); second_begin != collection2.end(); ++second_begin)
+		if(*first_begin == *second_begin)
 		{
-			if(*first_begin == *second_begin)
-			{
-				break;
-			}
+			first_begin++;
+			second_begin++;
 		}
-		if(second_begin == collection2.end())
+		else if(*first_begin < *second_begin)
 		{
 			result.insert(result.end(), *first_begin);
+			first_begin++;
 		}
+		else 
+		{
+			result.insert(result.end(), *second_begin);
+			second_begin++;
+		}
+	}
+
+	while(first_begin != collection1.end())
+	{
+		result.insert(result.end(), *first_begin);
+		first_begin++;
+	}
+
+	while(second_begin != collection2.end())
+	{
+		result.insert(result.end(), *second_begin);
+		second_begin++;
 	}
 
 	return result;
