@@ -26,12 +26,12 @@ void transform(Iterator first_begin, Iterator first_end, Iterator second_begin, 
 }
 
 
-template <typename Collection, typename Function>
-Collection filter_accept(Collection &collection, Function function)
+template <typename Container, typename Function>
+Container filter_accept(Container &container, Function function)
 {
-	Collection result;
-	typename Collection::iterator first_begin, result_begin = result.begin();
-	for(first_begin = collection.begin(); first_begin != collection.end(); ++first_begin)
+	Container result;
+	typename Container::iterator first_begin, result_begin = result.begin();
+	for(first_begin = container.begin(); first_begin != container.end(); ++first_begin)
 	{
 		if(function(*first_begin))
 		{
@@ -42,12 +42,12 @@ Collection filter_accept(Collection &collection, Function function)
 	return result;
 }
 
-template <typename Collection, typename Function>
-Collection filter_reject(Collection &collection, Function function)
+template <typename Container, typename Function>
+Container filter_reject(Container &container, Function function)
 {
-	Collection result;
-	typename Collection::iterator first_begin, result_begin = result.begin();
-	for(first_begin = collection.begin(); first_begin != collection.end(); ++first_begin)
+	Container result;
+	typename Container::iterator first_begin, result_begin = result.begin();
+	for(first_begin = container.begin(); first_begin != container.end(); ++first_begin)
 	{
 		if(!function(*first_begin))
 		{
