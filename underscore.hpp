@@ -47,3 +47,6 @@ Collection intersect(Collection collection1, Collection collection2, Collections
 
 template <typename Collection, typename ... Collections>
 Collection set_union(const Collection &collection1, const Collection &collection2, const Collections & ... others);
+
+template<typename Container, typename Function>
+std::map<int, std::vector<typename Container::value_type> >  group_by(Container &container, Function function); 
