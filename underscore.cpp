@@ -29,7 +29,7 @@ void transform(Iterator first_begin, Iterator first_end, Iterator second_begin, 
 template <typename Collection, typename Function>
 Collection filter_accept(Collection &collection, Function function)
 {
-	Collection result; 
+	Collection result;
 	typename Collection::iterator first_begin, result_begin = result.begin();
 	for(first_begin = collection.begin(); first_begin != collection.end(); ++first_begin)
 	{
@@ -97,7 +97,7 @@ bool every(Iterator begin, Iterator end, Predicate predicate)
 		begin++;
 	}
 
-	return true;	
+	return true;
 }
 
 template <typename Iterator, typename Predicate>
@@ -107,7 +107,7 @@ bool any(Iterator begin, Iterator end, Predicate predicate)
 	{
 		if(predicate(*begin))
 			return true;
-		
+
 		begin++;
 	}
 
@@ -160,7 +160,7 @@ int count_by(Iterator begin, Iterator end, Predicate predicate)
 		}
 		begin++;
 	}
-	return count;	
+	return count;
 }
 
 template <typename Iterator, typename Data>
@@ -194,9 +194,15 @@ bool contains(Iterator begin, Iterator end, std::pair<X, Y> p)
 
 }
 
+template <typename Container>
+int  size(const Container &container)
+{
+		return( container.end()-container.begin() );
+}
+
 
 template <typename Collection>
-Collection intersect(Collection collection) 
+Collection intersect(Collection collection)
 {
 	return collection;
 }
@@ -210,20 +216,20 @@ Collection intersect(Collection collection1, Collection collection2)
 	sort(collection2.begin(), collection2.end());
 
 	typename Collection::const_iterator first_begin = collection1.begin(), second_begin = collection2.begin();
-	
-	while(first_begin != collection1.end() && second_begin != collection2.end()) 
+
+	while(first_begin != collection1.end() && second_begin != collection2.end())
 	{
-		if(*first_begin == *second_begin) 
+		if(*first_begin == *second_begin)
 		{
 			result.insert(result.end(), *first_begin);
 			first_begin++;
 			second_begin++;
 		}
-		else if(*first_begin > *second_begin) 
+		else if(*first_begin > *second_begin)
 		{
 			second_begin++;
 		}
-		else 
+		else
 		{
 			first_begin++;
 		}
@@ -233,12 +239,12 @@ Collection intersect(Collection collection1, Collection collection2)
 }
 
 template <typename Collection, typename ... Collections>
-Collection intersect(Collection collection1, Collection collection2, Collections ... others) 
+Collection intersect(Collection collection1, Collection collection2, Collections ... others)
 {
 	return intersect(intersect(collection1, collection2), intersect(others...));
 }
 
-	
+
 template <typename Collection>
 Collection set_union(const Collection &collection1)
 {
