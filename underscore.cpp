@@ -26,12 +26,12 @@ void transform(Iterator first_begin, Iterator first_end, Iterator second_begin, 
 }
 
 
-template <typename Collection, typename Function>
-Collection filter_accept(Collection &collection, Function function)
+template <typename Container, typename Function>
+Container filter_accept(Container &container, Function function)
 {
-	Collection result;
-	typename Collection::iterator first_begin, result_begin = result.begin();
-	for(first_begin = collection.begin(); first_begin != collection.end(); ++first_begin)
+	Container result;
+	typename Container::iterator first_begin, result_begin = result.begin();
+	for(first_begin = container.begin(); first_begin != container.end(); ++first_begin)
 	{
 		if(function(*first_begin))
 		{
@@ -42,12 +42,12 @@ Collection filter_accept(Collection &collection, Function function)
 	return result;
 }
 
-template <typename Collection, typename Function>
-Collection filter_reject(Collection &collection, Function function)
+template <typename Container, typename Function>
+Container filter_reject(Container &container, Function function)
 {
-	Collection result;
-	typename Collection::iterator first_begin, result_begin = result.begin();
-	for(first_begin = collection.begin(); first_begin != collection.end(); ++first_begin)
+	Container result;
+	typename Container::iterator first_begin, result_begin = result.begin();
+	for(first_begin = container.begin(); first_begin != container.end(); ++first_begin)
 	{
 		if(!function(*first_begin))
 		{
@@ -201,23 +201,23 @@ int  size(const Container &container)
 }
 
 
-template <typename Collection>
-Collection intersect(Collection collection)
+template <typename Container>
+Container intersect(Container container)
 {
-	return collection;
+	return container;
 }
 
-template <typename Collection>
-Collection intersect(Collection collection1, Collection collection2)
+template <typename Container>
+Container intersect(Container container1, Container container2)
 {
-	Collection result;
+	Container result;
 
-	sort(collection1.begin(), collection1.end());
-	sort(collection2.begin(), collection2.end());
+	sort(container1.begin(), container1.end());
+	sort(container2.begin(), container2.end());
 
-	typename Collection::const_iterator first_begin = collection1.begin(), second_begin = collection2.begin();
+	typename Container::const_iterator first_begin = container1.begin(), second_begin = container2.begin();
 
-	while(first_begin != collection1.end() && second_begin != collection2.end())
+	while(first_begin != container1.end() && second_begin != container2.end())
 	{
 		if(*first_begin == *second_begin)
 		{
@@ -238,30 +238,30 @@ Collection intersect(Collection collection1, Collection collection2)
 	return result;
 }
 
-template <typename Collection, typename ... Collections>
-Collection intersect(Collection collection1, Collection collection2, Collections ... others)
+template <typename Container, typename ... containers>
+Container intersect(Container container1, Container container2, containers ... others)
 {
-	return intersect(intersect(collection1, collection2), intersect(others...));
+	return intersect(intersect(container1, container2), intersect(others...));
 }
 
 
-template <typename Collection>
-Collection set_union(const Collection &collection1)
+template <typename Container>
+Container set_union(const Container &container1)
 {
-	return collection1;
+	return container1;
 }
 
-template <typename Collection>
-Collection set_union(const Collection &collection1, const Collection &collection2)
+template <typename Container>
+Container set_union(const Container &container1, const Container &container2)
 {
-  Collection result;
+  Container result;
 
-	sort(collection1.begin(), collection1.end());
-	sort(collection2.begin(), collection2.end());
+	sort(container1.begin(), container1.end());
+	sort(container2.begin(), container2.end());
 
-	typename Collection::const_iterator first_begin = collection1.begin(), second_begin = collection2.begin();
+	typename Container::const_iterator first_begin = container1.begin(), second_begin = container2.begin();
 
-	while(first_begin != collection1.end() && second_begin != collection2.end())
+	while(first_begin != container1.end() && second_begin != container2.end())
 	{
 		if(*first_begin == *second_begin)
 		{
@@ -280,15 +280,15 @@ Collection set_union(const Collection &collection1, const Collection &collection
 			first_begin++;
 		}
 	}
-  // if collection2 done and collection1 remains... just add the rest of
-  // collection1 to end of result
-  if(first_begin != collection1.end()){
-    while(first_begin != collection1.end()){
+  // if container2 done and container1 remains... just add the rest of
+  // container1 to end of result
+  if(first_begin != container1.end()){
+    while(first_begin != container1.end()){
       result.insert(result.end(), *first_begin);
       first_begin++;
     }
-  } else { // otherwise add the rest of collection2 to the result
-    while(second_begin != collection2.end()){
+  } else { // otherwise add the rest of container2 to the result
+    while(second_begin != container2.end()){
       result.insert(result.end(), *second_begin);
       second_begin++;
     }
@@ -297,12 +297,12 @@ Collection set_union(const Collection &collection1, const Collection &collection
 	return result;
 }
 
-// TODO: Do the above algorithm with all collections provided at once - instead
+// TODO: Do the above algorithm with all containers provided at once - instead
 // of recursively calling
-template <typename Collection, typename ... Collections>
-Collection set_union(const Collection &collection1, const Collection &collection2, const Collections & ... others)
+template <typename Container, typename ... containers>
+Container set_union(const Container &container1, const Container &container2, const containers & ... others)
 {
-	return set_union(set_union(collection1, collection2), others...);
+	return set_union(set_union(container1, container2), others...);
 }
 
 
