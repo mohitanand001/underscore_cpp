@@ -19,6 +19,7 @@ Implementation of: <br>
 - [x] min
 - [x] intersect
 - [x] union
+- [x] difference
 - [x] size
 ## SETUP
 1. Clone the project using `git clone https://github.com/farziengineer/underscore_cpp` 

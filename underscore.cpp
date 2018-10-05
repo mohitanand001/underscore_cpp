@@ -260,49 +260,94 @@ Collection set_union(const Collection &collection1, const Collection &collection
 	sort(collection2.begin(), collection2.end());
 
 	typename Collection::const_iterator first_begin = collection1.begin(), second_begin = collection2.begin();
-
 	while(first_begin != collection1.end() && second_begin != collection2.end())
 	{
-		if(*first_begin == *second_begin)
-		{
-			result.insert(result.end(), *first_begin);
-			first_begin++;
-			second_begin++;
-		}
-		else if(*first_begin > *second_begin)
+		if(*second_begin < *first_begin)
 		{
 			result.insert(result.end(), *second_begin);
 			second_begin++;
+		}		
+		else if(*second_begin == *first_begin)
+		{
+			second_begin++;
+			first_begin++;
 		}
 		else
 		{
-			result.insert(result.end(), *first_begin);
 			first_begin++;
 		}
 	}
-  // if collection2 done and collection1 remains... just add the rest of
-  // collection1 to end of result
-  if(first_begin != collection1.end()){
-    while(first_begin != collection1.end()){
-      result.insert(result.end(), *first_begin);
-      first_begin++;
-    }
-  } else { // otherwise add the rest of collection2 to the result
-    while(second_begin != collection2.end()){
-      result.insert(result.end(), *second_begin);
-      second_begin++;
-    }
-  }
+  
+	while(second_begin != collection2.end())
+	{
+		result.insert(result.end(), *second_begin);
+		second_begin++;
+	}
 
 	return result;
 }
 
-// TODO: Do the above algorithm with all collections provided at once - instead
-// of recursively calling
 template <typename Collection, typename ... Collections>
 Collection set_union(const Collection &collection1, const Collection &collection2, const Collections & ... others)
 {
 	return set_union(set_union(collection1, collection2), others...);
+}
+
+
+template <typename Collection>
+Collection difference(Collection collection1)
+{
+	return collection1;
+}
+
+template <typename Collection>
+Collection difference(Collection collection1, Collection collection2)
+{
+	Collection result;
+	
+	sort(collection1.begin(), collection1.end());
+	sort(collection2.begin(), collection2.end());
+
+	typename Collection::const_iterator first_begin = collection1.begin(), second_begin = collection2.begin();
+	
+	while(first_begin != collection1.end() && second_begin != collection2.end())
+	{
+		if(*first_begin == *second_begin)
+		{
+			first_begin++;
+			second_begin++;
+		}
+		else if(*first_begin < *second_begin)
+		{
+			result.insert(result.end(), *first_begin);
+			first_begin++;
+		}
+		else 
+		{
+			result.insert(result.end(), *second_begin);
+			second_begin++;
+		}
+	}
+
+	while(first_begin != collection1.end())
+	{
+		result.insert(result.end(), *first_begin);
+		first_begin++;
+	}
+
+	while(second_begin != collection2.end())
+	{
+		result.insert(result.end(), *second_begin);
+		second_begin++;
+	}
+
+	return result;
+}
+
+template <typename Collection, typename ... Collections>
+Collection difference(Collection collection1, Collection collection2, Collections ... others)
+{
+	return difference(difference(collection1, collection2), others...);
 }
 
 

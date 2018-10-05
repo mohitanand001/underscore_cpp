@@ -24,30 +24,48 @@ bool is_odd(int x)
 
 int main()
 {
-	std::vector<int> vec = {1, 2, 45};
-	std::vector<int> lec;
+	std::vector<int> vector1 = {-999, 1, 3};
+	std::vector<int> vector2 = {1}; 
+	std::vector<int> vector3 = {-999, 1, 11, 3};
+	std::vector<int> vector4 = {-3, 1, 3, 4, 5};
 	std::map<int, int> mp;
 	mp[1] = 3, mp[2] = 21;
 	std::pair<const int, int> p {1, 3} ;
 	std::unordered_set<int> s; s.insert(1); s.insert(2); s.insert(23);
+
+	std::cout << "Contains function results:\n";
 	std::cout << underscore::contains(s.begin(), s.end(), 1212) << "\n";
 	std::cout << underscore::contains(mp.begin(), mp.end(), p) << "\n";
-	std::vector<int> v ={-999,1,3}, c = {-999, 1, 11, 3}, x = {-999, 1, 3, 4, 5};
-	std::cout << underscore::min(v) - v.begin() << "\n";
-	std::cout << *underscore::min(v) << "\n";
-	std::cout << underscore::max(v) - v.begin() << "\n";
-	std::cout << *underscore::max(v) << "\n";
-	std::cout <<	underscore::size(v)<<"\n";
-	std::vector<int> result = underscore::intersect(v, v, c, x);
+
+	std::cout << "min function results:\n";
+	std::cout << underscore::min(vector1) - vector1.begin() << "\n";
+	std::cout << *underscore::min(vector1) << "\n";
+
+	std::cout << "max function results:\n";
+	std::cout << underscore::max(vector1) - vector1.begin() << "\n";
+	std::cout << *underscore::max(vector1) << "\n";
+
+	std::cout << "Intersect function results:\n";
+	std::vector<int> result = underscore::intersect(vector1, vector1, vector2, vector3);
 	for(auto n : result) {
 		std::cout << n << " ";
 	}
-	result = underscore::set_union(v, c, x);
+	std::cout << "\n";
+
+	std::cout << "Set_union function results:\n";
+	result = underscore::set_union(vector1, vector3, vector4);
 	for(auto n : result)
 	{
 		std::cout << n << " ";
 	}
+	std::cout << "\n";
 
+	std::cout << "Difference function results:\n";
+	result = underscore::difference(vector4, vector3);
+	for(auto n : result)
+	{
+		std::cout << n << " ";
+	}
 
 	// auto x = std::find(mp.begin(), mp.end(), p) != mp.end();
 	// std::cout << x << std::endl;
