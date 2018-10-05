@@ -254,7 +254,7 @@ Collection set_union(const Collection &collection1)
 template <typename Collection>
 Collection set_union(const Collection &collection1, const Collection &collection2)
 {
-  Collection result;
+	Collection result;
 
 	sort(collection1.begin(), collection1.end());
 	sort(collection2.begin(), collection2.end());
@@ -280,19 +280,19 @@ Collection set_union(const Collection &collection1, const Collection &collection
 			first_begin++;
 		}
 	}
-  // if collection2 done and collection1 remains... just add the rest of
-  // collection1 to end of result
-  if(first_begin != collection1.end()){
-    while(first_begin != collection1.end()){
-      result.insert(result.end(), *first_begin);
-      first_begin++;
-    }
-  } else { // otherwise add the rest of collection2 to the result
-    while(second_begin != collection2.end()){
-      result.insert(result.end(), *second_begin);
-      second_begin++;
-    }
-  }
+	// if collection2 done and collection1 remains... just add the rest of
+	// collection1 to end of result
+	if(first_begin != collection1.end()){
+		while(first_begin != collection1.end()){
+			result.insert(result.end(), *first_begin);
+			first_begin++;
+		}
+	} else { // otherwise add the rest of collection2 to the result
+		while(second_begin != collection2.end()){
+			result.insert(result.end(), *second_begin);
+			second_begin++;
+		}
+	}
 
 	return result;
 }
