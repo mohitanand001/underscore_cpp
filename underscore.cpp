@@ -1,5 +1,6 @@
 #include <cstddef>
 #include <algorithm>
+#include <map>
 #include "underscore.hpp"
 namespace underscore{
 
@@ -304,6 +305,23 @@ Collection set_union(const Collection &collection1, const Collection &collection
 {
 	return set_union(set_union(collection1, collection2), others...);
 }
+
+
+
+	template<typename Container, typename Function>
+	std::map<int, std::vector<typename Container::value_type> >  group_by(Container &container, Function function) 
+	{
+	  std::map<int, std::vector<typename Container::value_type> > result;
+	  typename Container::iterator begin = container.begin();
+	  typename Container::iterator end = container.end();
+	  while(begin != end)
+	  {
+	  	result[function(*begin)].push_back(*begin);	
+	  	begin++;
+	  }
+
+	  return result;
+	}
 
 
 }
