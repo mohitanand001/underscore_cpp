@@ -278,17 +278,21 @@ namespace underscore
 	  // container1 to end of result
 	  	if(first_begin != container1.end())
 	  	{
-	    		while(first_begin != container1.end()){
-	    		result.insert(result.end(), *first_begin);
-	      		first_begin++;
-	    	}
+	            while(first_begin != container1.end())
+	            {
+	    		    result.insert(result.end(), *first_begin);
+	      		    first_begin++;
+	    	    }
+	        }
 	  	else 
 		{ 
-			// otherwise add the rest of container2 to the result
-	    		while(second_begin != container2.end()){
-	      		result.insert(result.end(), *second_begin);
-	      		second_begin++;
-	    	}
+		    // otherwise add the rest of container2 to the result
+	    	    while(second_begin != container2.end())
+	    	    {
+	      		    result.insert(result.end(), *second_begin);
+	      		    second_begin++;
+	    	    }
+	        }
 		return result;
 	}
 
