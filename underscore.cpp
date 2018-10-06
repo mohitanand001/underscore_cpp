@@ -244,8 +244,8 @@ namespace underscore
 		return container1;
 	}
 
-	template <typename Collection>
-	Collection set_union(Collection collection1, Collection collection2)
+	template <typename Container>
+	Container set_union(Container container1, Container container2)
 	{
 	  Container result;
 
@@ -297,8 +297,8 @@ namespace underscore
 
 	// TODO: Do the above algorithm with all containers provided at once - instead
 	// of recursively calling
-	template <typename Collection, typename ... Collections>
-	Collection set_union(Collection collection1, Collection collection2, Collections ... others)
+	template <typename Container, typename ... Containers>
+	Container set_union(Container container1, Container container2, Containers ... others)
 	{
 		return set_union(set_union(container1, container2), others...);
 	}
