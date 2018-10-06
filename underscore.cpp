@@ -283,7 +283,7 @@ namespace underscore
 	    		    result.insert(result.end(), *first_begin);
 	      		    first_begin++;
 	    	    }
-	    }
+	        }
 	  	else 
 		{ 
 			    // otherwise add the rest of container2 to the result
@@ -292,7 +292,7 @@ namespace underscore
 	      		    result.insert(result.end(), *second_begin);
 	      		    second_begin++;
 	    	    }
-	    }
+	        }
 		return result;
 	}
 
