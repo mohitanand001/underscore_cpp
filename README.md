@@ -1,11 +1,16 @@
 # underscore_cpp
 Inspired by [underscore.js](https://underscorejs.org) <br>
+## Table of contents:
+* [Implementation](./README.md#implementation-of)
+* [How to run the file](./README.md#setup)
+* [Usage](./README.md#usage)
+
 <pre>
 ┬ ┬┌┐┌┌┬┐┌─┐┬─┐┌─┐┌─┐┌─┐┬─┐┌─┐    ┌─┐┌─┐┌─┐
 │ ││││ ││├┤ ├┬┘└─┐│  │ │├┬┘├┤     │  ├─┘├─┘
 └─┘┘└┘─┴┘└─┘┴└─└─┘└─┘└─┘┴└─└─┘────└─┘┴  ┴  
 </pre>
-Implementation of: <br> 
+## Implementation of 
 - [x] each
 - [x] transform
 - [x] filter_accept
@@ -20,11 +25,11 @@ Implementation of: <br>
 - [x] intersect
 - [x] union
 - [x] size
-## SETUP
+## Setup
 1. Clone the project using `git clone https://github.com/farziengineer/underscore_cpp` 
 2. To run the project you can individually compile the files(.cpp) and link them, or just run the bash file `runn.sh` 
    using `bash runn.sh (on Linux)`. 
-## USAGE
+## Usage
 ### each
 ```C++
 void display(int x)
