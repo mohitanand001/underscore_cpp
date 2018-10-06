@@ -45,8 +45,8 @@ int size(Container container);
 template <typename Container, typename ... Containers>
 Container intersect(Container container1, Container container2, Containers ... others);
 
-template <typename Collection, typename ... Collections>
-Collection set_union(Collection collection1, Collection collection2, Collections  ... others);
+template <typename Container, typename ... Containers>
+Container set_union(Container container1, Container container2, Containers  ... others);
 
-template <typename Collection>
-Collection set_union(Collection collection);
+template <typename Container>
+Container set_union(Container container);
