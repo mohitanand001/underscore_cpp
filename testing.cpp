@@ -24,7 +24,21 @@ bool is_odd(int x)
 
 int main()
 {
-	std::vector<int> vec = {1, 2, 45};
+	std::vector<int> vec = {1, 2, 3};
+	std::vector<int> rec = {2, 34, 43};
+	std::vector<int> lec = {3, 54, 1};
+
+	std::vector<int> sec = underscore::set_union(vec, rec, lec);
+	underscore::each(vec.begin(), vec.end(), display);
+	std::cout << std::endl;
+	underscore::each(rec.begin(), rec.end(), display);
+	std::cout << std::endl;
+	underscore::each(lec.begin(), lec.end(), display);
+	std::cout << std::endl;
+
+	underscore::each(sec.begin(), sec.end(), display);
+	std::cout << std::endl;
+	// std::vector<int> vec = {1, 2, 45};
 	// std::vector<int> lec;
 	// std::map<int, int> mp;
 	// mp[1] = 3, mp[2] = 21;
@@ -39,6 +53,7 @@ int main()
 	// std::cout << *underscore::max(v) << "\n";
 	// std::cout <<	underscore::size(v)<<"\n";
 	// std::vector<int> result = underscore::intersect(v, v, c, x);
+	// std::vector<int> 
 	// for(auto n : result) {
 	// 	std::cout << n << " ";
 	// }
