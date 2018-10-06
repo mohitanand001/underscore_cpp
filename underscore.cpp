@@ -286,7 +286,7 @@ namespace underscore
 	        }
 	  	else 
 		{ 
-		// otherwise add the rest of container2 to the result
+		    // otherwise add the rest of container2 to the result
 	    	    while(second_begin != container2.end())
 	    	    {
 	      		    result.insert(result.end(), *second_begin);
