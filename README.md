@@ -1,9 +1,10 @@
 # underscore_cpp
 Inspired by [underscore.js](https://underscorejs.org) <br>
 ## Table of contents:
-* [Implementation](./README.md#implementation-of)
+* [Implementations](./README.md#implementation-of)
 * [How to run the file](./README.md#setup)
 * [Usage](./README.md#usage)
+* [Contribution Guidelines](./README.md#contribution-guidelines)
 
 <pre>
 ┬ ┬┌┐┌┌┬┐┌─┐┬─┐┌─┐┌─┐┌─┐┬─┐┌─┐    ┌─┐┌─┐┌─┐
@@ -59,3 +60,6 @@ underscore::transform(vec, increment_by_one);
 underscore::each(vec, display);
 ```
 Output: 2 3 4 
+
+## Contribution Guidelines
+For contributing fork the repository make the appropriate changes and create a pull request. Before starting to work on an issue, please ask it to be assigned to yourself, since we do not want more than one person to work on the same issue.
