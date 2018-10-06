@@ -46,4 +46,7 @@ template <typename Container, typename ... Containers>
 Container intersect(Container container1, Container container2, Containers ... others);
 
 template <typename Container, typename ... Containers>
-Container set_union(const Container &container1, const Container &container2, const Containers & ... others);
+Container set_union(Container container1, Container container2, Containers  ... others);
+
+template <typename Container>
+Container set_union(Container container);

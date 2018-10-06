@@ -24,29 +24,44 @@ bool is_odd(int x)
 
 int main()
 {
-	std::vector<int> vec = {1, 2, 45};
-	std::vector<int> lec;
-	std::map<int, int> mp;
-	mp[1] = 3, mp[2] = 21;
-	std::pair<const int, int> p {1, 3} ;
-	std::unordered_set<int> s; s.insert(1); s.insert(2); s.insert(23);
-	std::cout << underscore::contains(s.begin(), s.end(), 1212) << "\n";
-	std::cout << underscore::contains(mp.begin(), mp.end(), p) << "\n";
-	std::vector<int> v ={-999,1,3}, c = {-999, 1, 11, 3}, x = {-999, 1, 3, 4, 5};
-	std::cout << underscore::min(v) - v.begin() << "\n";
-	std::cout << *underscore::min(v) << "\n";
-	std::cout << underscore::max(v) - v.begin() << "\n";
-	std::cout << *underscore::max(v) << "\n";
-	std::cout <<	underscore::size(v)<<"\n";
-	std::vector<int> result = underscore::intersect(v, v, c, x);
-	for(auto n : result) {
-		std::cout << n << " ";
-	}
-	result = underscore::set_union(v, c, x);
-	for(auto n : result)
-	{
-		std::cout << n << " ";
-	}
+	std::vector<int> vec = {1, 2, 3};
+	std::vector<int> rec = {2, 34, 43};
+	std::vector<int> lec = {3, 54, 1};
+
+	std::vector<int> sec = underscore::set_union(vec, rec, lec);
+	underscore::each(vec.begin(), vec.end(), display);
+	std::cout << std::endl;
+	underscore::each(rec.begin(), rec.end(), display);
+	std::cout << std::endl;
+	underscore::each(lec.begin(), lec.end(), display);
+	std::cout << std::endl;
+
+	underscore::each(sec.begin(), sec.end(), display);
+	std::cout << std::endl;
+	// std::vector<int> vec = {1, 2, 45};
+	// std::vector<int> lec;
+	// std::map<int, int> mp;
+	// mp[1] = 3, mp[2] = 21;
+	// std::pair<const int, int> p {1, 3} ;
+	// std::unordered_set<int> s; s.insert(1); s.insert(2); s.insert(23);
+	// std::cout << underscore::contains(s.begin(), s.end(), 1212) << "\n";
+	// std::cout << underscore::contains(mp.begin(), mp.end(), p) << "\n";
+	// std::vector<int> v ={-999,1,3}, c = {-999, 1, 11, 3}, x = {-999, 1, 3, 4, 5};
+	// std::cout << underscore::min(v) - v.begin() << "\n";
+	// std::cout << *underscore::min(v) << "\n";
+	// std::cout << underscore::max(v) - v.begin() << "\n";
+	// std::cout << *underscore::max(v) << "\n";
+	// std::cout <<	underscore::size(v)<<"\n";
+	// std::vector<int> result = underscore::intersect(v, v, c, x);
+	// std::vector<int> 
+	// for(auto n : result) {
+	// 	std::cout << n << " ";
+	// }
+	// result = underscore::set_union(v, c, x);
+	// for(auto n : result)
+	// {
+	// 	std::cout << n << " ";
+	// }
 
 
 	// auto x = std::find(mp.begin(), mp.end(), p) != mp.end();

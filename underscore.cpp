@@ -238,7 +238,6 @@ namespace underscore
 		return intersect(intersect(container1, container2), intersect(others...));
 	}
 
-
 	template <typename Container>
 	Container set_union(const Container &container1)
 	{
@@ -246,7 +245,7 @@ namespace underscore
 	}
 
 	template <typename Container>
-	Container set_union(const Container &container1, const Container &container2)
+	Container set_union(Container container1, Container container2)
 	{
 	  Container result;
 
@@ -299,7 +298,7 @@ namespace underscore
 	// TODO: Do the above algorithm with all containers provided at once - instead
 	// of recursively calling
 	template <typename Container, typename ... Containers>
-	Container set_union(const Container &container1, const Container &container2, const Containers & ... others)
+	Container set_union(Container container1, Container container2, Containers ... others)
 	{
 		return set_union(set_union(container1, container2), others...);
 	}
