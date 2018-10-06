@@ -6,11 +6,11 @@ void each(Iterator begin, Iterator end, Function function);
 template <typename Iterator, typename Function>
 void transform(Iterator first_begin, Iterator first_end, Iterator second_begin, Function function);
 
-template <typename Collection, typename Function>
-Collection filter_accept(Collection &collection, Function function);
+template <typename Container, typename Function>
+Container filter_accept(Container &container, Function function);
 
-template <typename Collection, typename Function>
-Collection filter_reject(Collection &collection, Function function);
+template <typename Container, typename Function>
+Container filter_reject(Container &container, Function function);
 
 template <typename Iterator, typename Predicate>
 Iterator find_if(Iterator begin, Iterator end, Predicate predicate);
@@ -42,8 +42,8 @@ bool contains(Iterator begin, Iterator end, std::pair<X, Y> p);
 template <typename Container>
 int size(Container container);
 
-template <typename Collection, typename ... Collections>
-Collection intersect(Collection collection1, Collection collection2, Collections ... others);
+template <typename Container, typename ... Containers>
+Container intersect(Container container1, Container container2, Containers ... others);
 
 template <typename Collection, typename ... Collections>
 Collection set_union(Collection collection1, Collection collection2, Collections  ... others);
