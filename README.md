@@ -40,7 +40,7 @@ void display(int x)
 
 std::vector<int> vec = {1, 2, 3};
 
-underscore::each(vec, display);
+_::each(vec, display);
 ```
 Output: 1 2 3
 ### transform
@@ -56,8 +56,8 @@ void display(int x)
 }
 
 std::vector<int> vec = {1, 2, 3}; 
-underscore::transform(vec, increment_by_one);
-underscore::each(vec, display);
+_::transform(vec, increment_by_one);
+_::each(vec, display);
 ```
 Output: 2 3 4 
 
