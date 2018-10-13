@@ -159,6 +159,26 @@ std:: cout <<< _::any(vec, is_odd)<< std::endl;
 ```
 Output:  true (returns true if any container element return true over predicate)
 
+### count_by
+```C++
+int is_odd(int x)
+{
+   return x % 2 == 1;
+}
+
+std::vector<int> vec = {2, 4, 5}; 
+std:: cout <<< _::count_by(vec, is_odd)<< std::endl;
+```
+Output:  2 (counts occurrences where the container returns true over predicate. Here the predicate is is_odd)
+
+### contains
+```C++
+
+std::vector<int> vec = {2, 4, 5}; 
+std:: cout <<< _::any(vec, 9)<< std::endl;
+```
+Output:  false (returns true if any container element return true over predicate)
+
 
 
 
