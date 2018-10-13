@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
-// #include <map>
 #include "underscore.cpp"
+
 void display(int x)
 {
 	std:: cout << x << " " ;
@@ -28,15 +28,15 @@ int main()
 	std::vector<int> rec = {2, 34, 43};
 	std::vector<int> lec = {3, 54, 1};
 
-	std::vector<int> sec = underscore::set_union(vec, rec, lec);
-	underscore::each(vec.begin(), vec.end(), display);
+	std::vector<int> sec = _::set_union(vec, rec, lec);
+	_::each(vec.begin(), vec.end(), display);
 	std::cout << std::endl;
-	underscore::each(rec.begin(), rec.end(), display);
+	_::each(rec.begin(), rec.end(), display);
 	std::cout << std::endl;
-	underscore::each(lec.begin(), lec.end(), display);
+	_::each(lec.begin(), lec.end(), display);
 	std::cout << std::endl;
 
-	underscore::each(sec.begin(), sec.end(), display);
+	_::each(sec.begin(), sec.end(), display);
 	std::cout << std::endl;
 	// std::vector<int> vec = {1, 2, 45};
 	// std::vector<int> lec;
@@ -63,7 +63,8 @@ int main()
 	// 	std::cout << n << " ";
 	// }
 
-	std::map<int, std::vector<int> > mp = underscore::group_by(vec, is_odd);
+	std::cout << std::endl;
+	std::map<int, std::vector<int> > mp = _::group_by(vec, is_odd);
 	for(auto it = mp.begin(); it != mp.end(); ++it)
 	{
 		std:: cout << (it->first) << " " ;
