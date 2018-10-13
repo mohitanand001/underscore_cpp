@@ -1,6 +1,8 @@
 #include <cstddef>
 #include <algorithm>
 #include <map>
+#include <vector>
+
 #include "underscore.hpp"
 namespace _
 {
