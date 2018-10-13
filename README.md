@@ -179,6 +179,19 @@ std:: cout <<< _::any(vec, 9)<< std::endl;
 ```
 Output:  false (returns true if any container element return true over predicate)
 
+### max
+```C++
+std::vector<int> vec = {2, 4, 5}; 
+std:: cout <<< _::max(vec)<< std::endl;
+```
+Output:  5
+
+### min
+```C++
+std::vector<int> vec = {2, 4, 5}; 
+std:: cout <<< _::max(vec)<< std::endl;
+```
+Output:  2
 
 
 
