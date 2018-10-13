@@ -76,8 +76,8 @@ void display(int x)
 }
 
 std::vector<int> vec = {1, 2, 3}; 
-_::filter_accept(vec, is_odd);
-_::each(vec, display);
+std::vector<int> res = _::filter_accept(vec, is_odd);
+_::each(res, display);
 ```
 Output: 1 3 
 
@@ -94,8 +94,8 @@ void display(int x)
 }
 
 std::vector<int> vec = {1, 2, 3}; 
-_::filter_reject(vec, is_odd);
-_::each(vec, display);
+std::vector<int> res = _::filter_reject(vec, is_odd);
+_::each(res, display);
 ```
 Output: 2 
 
@@ -143,7 +143,7 @@ int is_odd(int x)
 }
 
 std::vector<int> vec = {3, 7, 5}; 
-std:: cout <<< _::every(vec, is_odd) - vec.begin() << std::endl;
+std:: cout <<< _::every(vec, is_odd) << std::endl;
 ```
 Output:  true (returns true if every container element return true over predicate)
 
@@ -167,7 +167,7 @@ int is_odd(int x)
 }
 
 std::vector<int> vec = {2, 4, 5}; 
-std:: cout <<< _::count_by(vec, is_odd)<< std::endl;
+std:: cout << _::count_by(vec, is_odd) << std::endl;
 ```
 Output:  2 (counts occurrences where the container returns true over predicate. Here the predicate is is_odd)
 
@@ -175,21 +175,21 @@ Output:  2 (counts occurrences where the container returns true over predicate. 
 ```C++
 
 std::vector<int> vec = {2, 4, 5}; 
-std:: cout <<< _::any(vec, 9)<< std::endl;
+std:: cout <<< _::contains(vec, 9)<< std::endl;
 ```
 Output:  false (returns true if any container element return true over predicate)
 
 ### max
 ```C++
 std::vector<int> vec = {2, 4, 5}; 
-std:: cout <<< _::max(vec)<< std::endl;
+std:: cout << _::max(vec)<< std::endl;
 ```
 Output:  5
 
 ### min
 ```C++
 std::vector<int> vec = {2, 4, 5}; 
-std:: cout <<< _::max(vec)<< std::endl;
+std:: cout << _::max(vec)<< std::endl;
 ```
 Output:  2
 
