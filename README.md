@@ -94,6 +94,25 @@ _::filter_reject(vec, is_odd);
 _::each(vec, display);
 ```
 Output: 2 
+### find_if
+```C++
+int is_odd(int x)
+{
+   return x % 2 == 1;
+}
+
+void display(int x)
+{
+   cout << x << " ";
+}
+
+std::vector<int> vec = {2, 4, 5}; 
+int index = _::find_if(vec, is_odd) - vec.begin();
+std::cout << vec[index];
+```
+Output:  5
+
+
 
 
 
