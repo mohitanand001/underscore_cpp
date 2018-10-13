@@ -111,6 +111,23 @@ int index = _::find_if(vec, is_odd) - vec.begin();
 std::cout << vec[index];
 ```
 Output:  5
+### find_if_not
+```C++
+int is_odd(int x)
+{
+   return x % 2 == 1;
+}
+
+void display(int x)
+{
+   cout << x << " ";
+}
+
+std::vector<int> vec = {1, 2, 4, 5}; 
+int index = _::find_if_not(vec, is_odd) - vec.begin();
+std::cout << vec[index];
+```
+Output:  2 (returns first index where the container value returns a false over predicate)
 
 
 
