@@ -128,6 +128,17 @@ int index = _::find_if_not(vec, is_odd) - vec.begin();
 std::cout << vec[index];
 ```
 Output:  2 (returns first index where the container value returns a false over predicate)
+### every
+```C++
+int is_odd(int x)
+{
+   return x % 2 == 1;
+}
+
+std::vector<int> vec = {3, 7, 5}; 
+std:: cout <<< _::every(vec, is_odd) - vec.begin() << std::endl;
+```
+Output:  true (returns true if every container element return true over predicate)
 
 
 
