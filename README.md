@@ -77,6 +77,23 @@ _::filter_accept(vec, is_odd);
 _::each(vec, display);
 ```
 Output: 1 3 
+### filter_reject
+```C++
+int is_odd(int x)
+{
+   return x % 2 == 1;
+}
+
+void display(int x)
+{
+   cout << x << " ";
+}
+
+std::vector<int> vec = {1, 2, 3}; 
+_::filter_reject(vec, is_odd);
+_::each(vec, display);
+```
+Output: 2 
 
 
 
