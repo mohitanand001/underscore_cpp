@@ -196,7 +196,7 @@ Output:  2
 ### size
 ```C++
 std::vector<int> vec = {2, 4, 5};
-std::cout << _::size(vector)<< std::endl;
+std::cout << _::size(vec)<< std::endl;
 ```
 Output: 3
 
