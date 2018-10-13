@@ -60,6 +60,25 @@ _::transform(vec, increment_by_one);
 _::each(vec, display);
 ```
 Output: 2 3 4 
+### filter_accept
+```C++
+int is_odd(int x)
+{
+   return x % 2 == 1;
+}
+
+void display(int x)
+{
+   cout << x << " ";
+}
+
+std::vector<int> vec = {1, 2, 3}; 
+_::filter_accept(vec, is_odd);
+_::each(vec, display);
+```
+Output: 1 3 
+
+
 
 ## Contribution Guidelines
 For contributing fork the repository make the appropriate changes and create a pull request. Before starting to work on an issue, please ask it to be assigned to yourself, since we do not want more than one person to work on the same issue.
