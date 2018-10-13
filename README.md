@@ -31,6 +31,7 @@ Inspired by [underscore.js](https://underscorejs.org) <br>
 2. To run the project you can individually compile the files(.cpp) and link them, or just run the bash file `runn.sh` 
    using `bash runn.sh (on Linux)`. 
 ## Usage
+
 ### each
 ```C++
 void display(int x)
@@ -43,6 +44,7 @@ std::vector<int> vec = {1, 2, 3};
 _::each(vec, display);
 ```
 Output: 1 2 3
+
 ### transform
 ```C++
 int increment_by_one(int x)
@@ -60,6 +62,7 @@ _::transform(vec, increment_by_one);
 _::each(vec, display);
 ```
 Output: 2 3 4 
+
 ### filter_accept
 ```C++
 int is_odd(int x)
@@ -77,6 +80,7 @@ _::filter_accept(vec, is_odd);
 _::each(vec, display);
 ```
 Output: 1 3 
+
 ### filter_reject
 ```C++
 int is_odd(int x)
@@ -94,6 +98,7 @@ _::filter_reject(vec, is_odd);
 _::each(vec, display);
 ```
 Output: 2 
+
 ### find_if
 ```C++
 int is_odd(int x)
@@ -111,6 +116,7 @@ int index = _::find_if(vec, is_odd) - vec.begin();
 std::cout << vec[index];
 ```
 Output:  5
+
 ### find_if_not
 ```C++
 int is_odd(int x)
@@ -128,6 +134,7 @@ int index = _::find_if_not(vec, is_odd) - vec.begin();
 std::cout << vec[index];
 ```
 Output:  2 (returns first index where the container value returns a false over predicate)
+
 ### every
 ```C++
 int is_odd(int x)
@@ -140,6 +147,17 @@ std:: cout <<< _::every(vec, is_odd) - vec.begin() << std::endl;
 ```
 Output:  true (returns true if every container element return true over predicate)
 
+### any
+```C++
+int is_odd(int x)
+{
+   return x % 2 == 1;
+}
+
+std::vector<int> vec = {2, 4, 5}; 
+std:: cout <<< _::any(vec, is_odd)<< std::endl;
+```
+Output:  true (returns true if any container element return true over predicate)
 
 
 
