@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <map>
 #include "underscore.hpp"
-namespace underscore
+namespace _
 {
 	template <typename Iterator, typename Function>
 	void each(Iterator begin, Iterator end, Function function)
