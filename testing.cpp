@@ -63,6 +63,15 @@ int main()
 	// 	std::cout << n << " ";
 	// }
 
+	std::cout << std::endl;
+	std::map<int, std::vector<int> > mp = _::group_by(vec, is_odd);
+	for(auto it = mp.begin(); it != mp.end(); ++it)
+	{
+		std:: cout << (it->first) << " " ;
+		for(int j = 0; j < (it->second).size(); j++)
+			std::cout << (it->second)[j] << " ";
+		std::cout << std::endl;
+	}
 
 	// auto x = std::find(mp.begin(), mp.end(), p) != mp.end();
 	// std::cout << x << std::endl;
