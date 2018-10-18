@@ -64,8 +64,20 @@ int main()
 	// }
 
 	std::cout << std::endl;
-	std::map<int, std::vector<int> > mp = _::group_by(vec, is_odd);
-	for(auto it = mp.begin(); it != mp.end(); ++it)
+	// test group_by with bool keyed groups
+	std::map<bool, std::vector<int> > mp_bool = _::group_by(vec, is_odd);
+	for(auto it = mp_bool.begin(); it != mp_bool.end(); ++it)
+	{
+		std:: cout << (it->first) << " " ;
+		for(int j = 0; j < (it->second).size(); j++)
+			std::cout << (it->second)[j] << " ";
+		std::cout << std::endl;
+	}
+
+	std::cout << std::endl;
+	// test group_by with int keyed groups
+	std::map<int, std::vector<int> > mp_int = _::group_by(vec, mulp);
+	for(auto it = mp_int.begin(); it != mp_int.end(); ++it)
 	{
 		std:: cout << (it->first) << " " ;
 		for(int j = 0; j < (it->second).size(); j++)
