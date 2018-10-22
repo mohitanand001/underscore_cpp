@@ -45,8 +45,8 @@ int size(Container container);
 template <typename Container, typename ... Containers>
 Container intersect(Container container1, Container container2, Containers ... others);
 
-template<typename Container, typename Function>
-std::map<int, std::vector<typename Container::value_type> >  group_by(Container &container, Function function); 
+template <typename Container, typename Function>
+auto group_by(Container &container, Function function) -> std::map<decltype(function(*container.begin())), std::vector<typename Container::value_type>>;
 
 template <typename Container, typename ... Containers>
 Container set_union(Container container1, Container container2, Containers  ... others);

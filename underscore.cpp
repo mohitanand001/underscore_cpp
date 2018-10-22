@@ -305,22 +305,20 @@ namespace _
 	Container set_union(Container container1, Container container2, Containers ... others)
 	{
 		return set_union(set_union(container1, container2), others...);
-	}        
-
-	template<typename Container, typename Function>
-	std::map<int, std::vector<typename Container::value_type> >  group_by(Container &container, Function function) 
-	{
-	  std::map<int, std::vector<typename Container::value_type> > result;
-	  typename Container::iterator begin = container.begin();
-	  typename Container::iterator end = container.end();
-	  while(begin != end)
-	  {
-	  	result[function(*begin)].push_back(*begin);	
-	  	begin++;
-	  }
-
-	  return result;
 	}
 
 
+	template <typename Container, typename Function>
+	auto group_by(Container &container, Function function) -> std::map<decltype(function(*container.begin())), std::vector<typename Container::value_type>>
+	{
+		std::map<decltype(function(*container.begin())), std::vector<typename Container::value_type>> result;
+		typename Container::iterator begin = container.begin();
+		typename Container::iterator end = container.end();
+		while(begin != end)
+		{
+			result[function(*begin)].push_back(*begin);
+			begin++;
+		}
+		return result;
+	}
 }
