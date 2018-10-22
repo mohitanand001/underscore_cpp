@@ -19,6 +19,7 @@ Inspired by [underscore.js](https://underscorejs.org) <br>
 - [x] find_if
 - [x] find_if_not
 - [x] every
+- [x] reduce
 - [x] count_by
 - [x] contains
 - [x] max
@@ -158,6 +159,18 @@ std::vector<int> vec = {2, 4, 5};
 std:: cout <<< _::any(vec, is_odd)<< std::endl;
 ```
 Output:  true (returns true if any container element return true over predicate)
+
+### reduce
+```C++
+int multiply(int x, int y)
+{
+	return x * y;
+}
+
+std::vector<int> vec = {1, 2, 3, 4, 5};
+std::cout << _::reduce(vec, multiply, 1) << std::endl;
+```
+Output:  120 (applies a function of two arguments cumulatively to the items of an iterable, from left to right, so as to reduce the sequence to a single value)
 
 ### count_by
 ```C++

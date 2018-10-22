@@ -22,6 +22,11 @@ bool is_odd(int x)
 	return x % 2 == 1;
 }
 
+int multiply(int x, int y)
+{
+	return x * y;
+}
+
 int main()
 {
 	std::vector<int> vec = {1, 2, 3};
@@ -62,6 +67,11 @@ int main()
 	// {
 	// 	std::cout << n << " ";
 	// }
+
+	// Reduce
+	std::cout << "\nReduce ";
+	_::each(vec.begin(), vec.end(), display);
+	std::cout << "-> " << _::reduce(vec, multiply, 1) << std::endl;
 
 	std::cout << std::endl;
 	// test group_by with bool keyed groups

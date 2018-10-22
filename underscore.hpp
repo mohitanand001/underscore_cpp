@@ -30,6 +30,9 @@ typename Container::const_iterator max(Container container);
 template <typename Container>
 typename Container::const_iterator min(Container container);
 
+template <typename Container, typename Operator, typename Operand>
+Operand reduce(Container container, Operator operate, Operand base);
+
 template <typename Iterator, typename Predicate>
 int count_by(Iterator begin, Iterator end, Predicate predicate);
 

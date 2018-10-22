@@ -146,6 +146,15 @@ namespace _
 		return min;
 	}
 
+	template <typename Container, typename Operator, typename Operand>
+	Operand reduce(const Container &container, Operator operate, Operand base)
+	{
+		Operand result = base;
+		for(typename Container::const_iterator it = container.begin(); it != container.end(); ++it)
+			result = operate(result, *it);
+		return result;
+	}
+
 	template <typename Iterator, typename Predicate>
 	int count_by(Iterator begin, Iterator end, Predicate predicate)
 	{
