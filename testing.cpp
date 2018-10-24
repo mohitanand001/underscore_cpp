@@ -1,9 +1,9 @@
-#include <bits/stdc++.h>
+#include <iostream>
 #include "underscore.cpp"
 
 void display(int x)
 {
-	std:: cout << x << " " ;
+	std::cout << x << " " ;
 }
 
 int incr(int x)
