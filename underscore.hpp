@@ -51,6 +51,9 @@ Container intersect(Container container1, Container container2, Containers ... o
 template <typename Container, typename Function>
 auto group_by(Container &container, Function function) -> std::map<decltype(function(*container.begin())), std::vector<typename Container::value_type>>;
 
+template <typename Container, typename Function>
+auto count_by(Container &container, Function function) -> std::map<decltype(function(*container.begin())), int>;
+
 template <typename Container, typename ... Containers>
 Container set_union(Container container1, Container container2, Containers  ... others);
 

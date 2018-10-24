@@ -94,7 +94,6 @@ namespace _
 				return false;
 			begin++;
 		}
-
 		return true;
 	}
 
@@ -108,7 +107,6 @@ namespace _
 
 			begin++;
 		}
-
 		return false;
 	}
 
@@ -125,7 +123,6 @@ namespace _
 			if((*max) < (*it))
 				max = it;
 		}
-
 		return max;
 	}
 
@@ -142,7 +139,6 @@ namespace _
 			if((*min) > (*it))
 				min = it;
 		}
-
 		return min;
 	}
 
@@ -179,26 +175,20 @@ namespace _
 				return true;
 			begin++;
 		}
-
 		return false;
-
 	}
 
 
 	template <typename Iterator, typename Data, typename X, typename Y>
 	bool contains(Iterator begin, Iterator end, std::pair<X, Y> p)
 	{
-
 		while(begin != end)
 		{
-
 			if((*begin).first == p.first and (*begin).second == p.second)
 				return true;
 			begin++;
 		}
-
 		return false;
-
 	}
 
 	template <typename Container>
@@ -330,4 +320,15 @@ namespace _
 		}
 		return result;
 	}
+
+    template <typename Container, typename Function>
+    auto count_by(Container &container, Function function) -> std::map<decltype(function(*container.begin())), int>
+    {
+	    std::map<decltype(function(*container.begin())), int> result;
+	    std::map<decltype(function(*container.begin())), std::vector<typename Container::value_type>> grouped_by = group_by(container, function);
+	    for (auto &kv : grouped_by) {
+	    	result[kv.first] = kv.second.size();
+	    }
+	    return result;
+    }
 }

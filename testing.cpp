@@ -1,9 +1,9 @@
-#include <bits/stdc++.h>
+#include <iostream>
 #include "underscore.cpp"
 
 void display(int x)
 {
-	std:: cout << x << " " ;
+	std::cout << x << " " ;
 }
 
 int incr(int x)
@@ -95,7 +95,21 @@ int main()
 		std::cout << std::endl;
 	}
 
-	// auto x = std::find(mp.begin(), mp.end(), p) != mp.end();
+	// test count_by
+    std::cout << std::endl << "count_by (is_odd)" << std::endl;
+	auto count_by_bool = _::count_by(vec, is_odd);
+	for(auto &kv : count_by_bool) {
+	    std::cout << kv.first << " " << kv.second << std::endl;
+	}
+
+    std::cout << std::endl << "count_by (mulp)" << std::endl;
+    auto count_by_mulp = _::count_by(vec, mulp);
+    for(auto &kv : count_by_mulp) {
+        std::cout << kv.first << " " << kv.second << std::endl;
+    }
+    std::cout << std::endl;
+
+    // auto x = std::find(mp.begin(), mp.end(), p) != mp.end();
 	// std::cout << x << std::endl;
 	// std::cout << x << std::endl;
 
