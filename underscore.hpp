@@ -52,7 +52,7 @@ template <typename Container, typename Function>
 auto group_by(Container &container, Function function) -> std::map<decltype(function(*container.begin())), std::vector<typename Container::value_type>>;
 
 template <typename Container, typename Function>
-auto count_by(Container &container, Function function) -> std::map<decltype(function(*container.begin())), int>;
+auto count_by(Container &container, Function function) -> std::map<decltype(function(*container.begin())), size_t>;
 
 template <typename Container, typename ... Containers>
 Container set_union(Container container1, Container container2, Containers  ... others);

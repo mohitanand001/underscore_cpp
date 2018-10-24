@@ -1,28 +1,28 @@
 #include <iostream>
 #include "underscore.cpp"
 
-void display(int x)
+inline void display(int x)
 {
 	std::cout << x << " " ;
 }
 
-int incr(int x)
+inline int incr(int x)
 {
 	x = x + 1;
 	return x;
 }
 
-int mulp(int x)
+inline int mulp(int x)
 {
 	return x*10;
 }
 
-bool is_odd(int x)
+inline bool is_odd(int x)
 {
 	return x % 2 == 1;
 }
 
-int multiply(int x, int y)
+inline int multiply(int x, int y)
 {
 	return x * y;
 }
@@ -76,35 +76,33 @@ int main()
 	std::cout << std::endl;
 	// test group_by with bool keyed groups
 	auto mp_bool = _::group_by(vec, is_odd);
-	for(auto it = mp_bool.begin(); it != mp_bool.end(); ++it)
-	{
-		std:: cout << (it->first) << " " ;
-		for(int j = 0; j < (it->second).size(); j++)
-			std::cout << (it->second)[j] << " ";
+	for (const auto &it : mp_bool) {
+		std:: cout << (it.first) << " " ;
+		for (int j : (it.second))
+			std::cout << j << " ";
 		std::cout << std::endl;
 	}
 
 	std::cout << std::endl;
 	// test group_by with int keyed groups
 	auto mp_int = _::group_by(vec, mulp);
-	for(auto it = mp_int.begin(); it != mp_int.end(); ++it)
-	{
-		std:: cout << (it->first) << " " ;
-		for(int j = 0; j < (it->second).size(); j++)
-			std::cout << (it->second)[j] << " ";
+	for (const auto &it : mp_int) {
+		std:: cout << (it.first) << " " ;
+		for (int j : (it.second))
+			std::cout << j << " ";
 		std::cout << std::endl;
 	}
 
 	// test count_by
     std::cout << std::endl << "count_by (is_odd)" << std::endl;
 	auto count_by_bool = _::count_by(vec, is_odd);
-	for(auto &kv : count_by_bool) {
+	for(const auto &kv : count_by_bool) {
 	    std::cout << kv.first << " " << kv.second << std::endl;
 	}
 
     std::cout << std::endl << "count_by (mulp)" << std::endl;
     auto count_by_mulp = _::count_by(vec, mulp);
-    for(auto &kv : count_by_mulp) {
+    for(const auto &kv : count_by_mulp) {
         std::cout << kv.first << " " << kv.second << std::endl;
     }
     std::cout << std::endl;
