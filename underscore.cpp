@@ -152,7 +152,7 @@ namespace _
 	}
 
 	template <typename Iterator, typename Predicate>
-	int count_by(Iterator begin, Iterator end, Predicate predicate)
+	size_t count_by(Iterator begin, Iterator end, Predicate predicate)
 	{
 		size_t count = 0;
 		while(begin != end)
@@ -192,7 +192,7 @@ namespace _
 	}
 
 	template <typename Container>
-	int  size(const Container &container)
+	int size(const Container &container)
 	{
 		return( container.end()-container.begin() );
 	}
@@ -322,9 +322,9 @@ namespace _
 	}
 
     template <typename Container, typename Function>
-    auto count_by(Container &container, Function function) -> std::map<decltype(function(*container.begin())), int>
+    auto count_by(Container &container, Function function) -> std::map<decltype(function(*container.begin())), size_t>
     {
-	    std::map<decltype(function(*container.begin())), int> result;
+	    std::map<decltype(function(*container.begin())), size_t> result;
 	    std::map<decltype(function(*container.begin())), std::vector<typename Container::value_type>> grouped_by = group_by(container, function);
 	    for (auto &kv : grouped_by) {
 	    	result[kv.first] = kv.second.size();
