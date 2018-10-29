@@ -59,7 +59,7 @@ void display(int x)
 }
 
 std::vector<int> vec = {1, 2, 3}; 
-_::transform(vec, increment_by_one);
+_::transform(vec.begin(), vec.end(), increment_by_one);
 _::each(vec, display);
 ```
 Output: 2 3 4 
