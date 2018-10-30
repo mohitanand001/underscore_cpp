@@ -1,48 +1,45 @@
-cmake_minimum_required (VERSION 3.8)
-project (underscore CXX)
+cmake_minimum_required(VERSION 3.8)
+project(underscore CXX)
 
-include_directories(.)
+include_directories("src")
 
 set(SOURCE_FILES
-    underscore.cpp)
+        src/underscore.hpp
+        )
 
-if(CMAKE_CXX_COMPILER_ID MATCHES Clang)
+if (CMAKE_CXX_COMPILER_ID MATCHES Clang)
     add_compile_options(
             -Weverything
             -Wno-c++98-compat
             -Wno-padded
             -Wno-global-constructors
             -Wno-exit-time-destructors
-            -Wno-weak-vtables)
-endif()
+            -Wno-weak-vtables
+            -Wundefined-func-template)
+endif ()
 
-# library in shared and static flavors
+# shared library libunderscore_shared
 add_library(underscore_shared SHARED ${SOURCE_FILES})
-add_library(underscore_static STATIC ${SOURCE_FILES})
 
 # linker settings
 set_target_properties(underscore_shared PROPERTIES LINKER_LANGUAGE CXX)
-set_target_properties(underscore_static PROPERTIES LINKER_LANGUAGE CXX)
 
 # compiler settings
 target_compile_features(underscore_shared PUBLIC cxx_std_11)
-target_compile_features(underscore_static PUBLIC cxx_std_11)
 
-# executables for testing, one for testing shared library, another for the static one
-# As testing becomes more complex, add test suite here. SUGGESTION: use catch2 for formal unit tests
+
+# Catch2 (v2.4.2) based Unit Tests
 set(TEST_FILES
-    testing.cpp)
+        tests/catch.hpp
+        tests/testing.cpp
+        tests/tests_main.cpp)
 
-add_executable(underscore_shared_tests ${TEST_FILES})
-add_executable(underscore_static_tests ${TEST_FILES})
+add_executable(underscore_tests ${SOURCE_FILES} ${TEST_FILES})
 
-# link the test binaries
-set_target_properties(underscore_shared_tests PROPERTIES LINKER_LANGUAGE CXX)
-set_target_properties(underscore_static_tests PROPERTIES LINKER_LANGUAGE CXX)
+target_include_directories(underscore_tests PUBLIC
+        src
+        tests)
 
-target_compile_features(underscore_shared_tests PUBLIC cxx_std_11)
-target_compile_features(underscore_static_tests PUBLIC cxx_std_11)
-
-target_link_libraries(underscore_shared_tests underscore_shared)
-target_link_libraries(underscore_static_tests underscore_static)
+set_target_properties(underscore_tests PROPERTIES LINKER_LANGUAGE CXX)
+target_compile_features(underscore_tests PUBLIC cxx_std_11)
 
