@@ -8,11 +8,18 @@
 
 namespace _ {
     template<typename Iterator, typename Function>
-    void each(Iterator begin, Iterator end, Function function) {
+    void each(Iterator begin, Iterator end, Function function) 
+    {
         while (begin != end) {
             function(*begin);
             begin++;
         }
+    }
+
+    template<typename Container, typename Function>
+    void each(Container &container, Function function)
+    {
+        each(container.begin(), container.end(), function);
     }
 
     template <typename Iterator, typename Function>

@@ -14,7 +14,8 @@ TEST_CASE("basic tests_main") {
 
         // 1, 2, 3 don't get added again in union, size should be 6
         REQUIRE(sec.size() == (vec.size() + rec.size() + lec.size() - 3));
-
+        _::each(sec, display);
+        std::cout << std::endl;
 	    _::each(vec.begin(), vec.end(), display);
         std::cout << std::endl;
 	    _::each(rec.begin(), rec.end(), display);
@@ -23,8 +24,9 @@ TEST_CASE("basic tests_main") {
 	    std::cout << std::endl;
         _::each(sec.begin(), sec.end(), display);
 	    std::cout << std::endl;
-
-        _::each(sec.begin(), sec.end(), [](int elem){ std::cout << "Lambda each display: " << elem << std::endl; });
+	    std::cout << std::endl;
+        _::each(sec, [](int elem){ std::cout << "_::each(λdisplay) -> " << elem << std::endl; });
+	    std::cout << std::endl;
     }
 
     SECTION("_::reduce section")
