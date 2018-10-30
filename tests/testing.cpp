@@ -23,6 +23,8 @@ TEST_CASE("basic tests_main") {
 	    std::cout << std::endl;
         _::each(sec.begin(), sec.end(), display);
 	    std::cout << std::endl;
+
+        _::each(sec.begin(), sec.end(), [](int elem){ std::cout << "Lambda each display: " << elem << std::endl; });
     }
 
     SECTION("_::reduce section")
