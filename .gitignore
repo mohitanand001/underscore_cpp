@@ -1,3 +1,15 @@
 *.o
 *.out
 tsting.cpp
+Makefile
+CMakeFiles/**
+.idea/**
+CMakeCache.txt
+cmake-build-debug
+cmake_install.cmake
+*.cbp
+libunderscore_shared.dylib
+libunderscore_shared.dll
+libunderscore_shared.so
+underscore_tests
+underscore_tests.exe

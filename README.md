@@ -27,10 +27,17 @@ Inspired by [underscore.js](https://underscorejs.org) <br>
 - [x] intersect
 - [x] union
 - [x] size
-## Setup
+## Setup and build
 1. Clone the project using `git clone https://github.com/farziengineer/underscore_cpp` 
-2. To run the project you can individually compile the files(.cpp) and link them, or just run the bash file `runn.sh` 
-   using `bash runn.sh (on Linux)`. 
+2. To first configure the project build you will need cmake (3.8 or higher), from the project's root directory type `cmake .`
+3. To build type `make -j 4`
+
+The build will create a shared library:
+ - `libunderscore_shared.so` (linux)
+ - `libunderscore_shared.dylib` (macos)
+ - `libunderscore_shared.dll` (windows)
+ 
+And an executable for the tests `underscore_tests`  
 ## Usage
 
 ### each
