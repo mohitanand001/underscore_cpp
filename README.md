@@ -3,8 +3,8 @@ Inspired by [underscore.js](https://underscorejs.org) <br>
 ## Table of contents:
 * [Implementations](#implementation-of)
 * [Setup and Build](#setup-and-build)
-* [Usage](./README.md#usage)
-* [Contribution Guidelines](./README.md#contribution-guidelines)
+* [Usage](#usage)
+* [Contribution Guidelines](#contribution-guidelines)
 
 <pre>
 ┬ ┬┌┐┌┌┬┐┌─┐┬─┐┌─┐┌─┐┌─┐┬─┐┌─┐    ┌─┐┌─┐┌─┐
