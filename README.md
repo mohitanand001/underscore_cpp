@@ -2,7 +2,7 @@
 Inspired by [underscore.js](https://underscorejs.org) <br>
 ## Table of contents:
 * [Implementations](./README.md#implementation-of)
-* [How to run the file](./README.md#setup)
+* [Setup and Build](./README.md#setup-and-build)
 * [Usage](./README.md#usage)
 * [Contribution Guidelines](./README.md#contribution-guidelines)
 
