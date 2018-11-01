@@ -11,7 +11,7 @@ namespace _ {
     void each(Iterator begin, Iterator end, Function function)
     {
         while (begin != end)
-	{
+	    {
             function(*begin);
             begin++;
         }
@@ -55,9 +55,9 @@ namespace _ {
         Container result;
         typename Container::iterator first_begin, result_begin = result.begin();
         for (first_begin = container.begin(); first_begin != container.end(); ++first_begin)
-	{
-            if (!function(*first_begin))
 	    {
+            if(!function(*first_begin))
+	        {
                 result.insert(result.end(), *first_begin);
             }
         }
@@ -68,9 +68,9 @@ namespace _ {
     Iterator find_if(Iterator begin, Iterator end, Predicate predicate)
     {
         while (begin != end)
-	{
-            if (predicate(*begin))
 	    {
+            if (predicate(*begin))
+	        {
                 return begin;
             }
             begin++;
@@ -82,9 +82,9 @@ namespace _ {
     Iterator find_if_not(Iterator begin, Iterator end, Predicate predicate)
     {
         while (begin != end)
-	{
-            if (!predicate(*begin))
 	    {
+            if (!predicate(*begin))
+	        {
                 return begin;
             }
             begin++;
@@ -96,7 +96,7 @@ namespace _ {
     bool every(Iterator begin, Iterator end, Predicate predicate)
     {
         while (begin != end)
-	{
+	    {
             if (predicate(*begin) == false)
                 return false;
             begin++;
@@ -108,7 +108,7 @@ namespace _ {
     bool any(Iterator begin, Iterator end, Predicate predicate)
     {
         while (begin != end)
-	{
+	    {
             if (predicate(*begin))
                 return true;
             begin++;
@@ -124,8 +124,8 @@ namespace _ {
 
         typename Container::const_iterator max = container.begin();
 
-        for (typename Container::const_iterator it = ++container.begin(); it != container.end(); ++it)
-	{
+        for(typename Container::const_iterator it = ++container.begin(); it != container.end(); ++it)
+	    {
             if ((*max) < (*it))
                 max = it;
         }
@@ -135,13 +135,13 @@ namespace _ {
     template<typename Container>
     typename Container::const_iterator min(const Container &container)
     {
-        if (container.begin() == container.end())
+        if(container.begin() == container.end())
             return container.end();
 
         typename Container::const_iterator min = container.begin();
 
-        for (typename Container::const_iterator it = ++container.begin(); it != container.end(); ++it)
-	{
+        for(typename Container::const_iterator it = ++container.begin(); it != container.end(); ++it)
+	    {
             if ((*min) > (*it))
                 min = it;
         }
@@ -152,10 +152,10 @@ namespace _ {
     Operand reduce(const Container &container, Operator operate, Operand base)
     {
         Operand result = base;
-        for (typename Container::const_iterator it = container.begin(); it != container.end(); ++it)
-	{
-   		result = operate(result, *it);
-	}
+        for(typename Container::const_iterator it = container.begin(); it != container.end(); ++it)
+	    {
+   		   result = operate(result, *it);
+	    }
         return result;
     }
 
@@ -163,7 +163,7 @@ namespace _ {
     bool contains(Iterator begin, Iterator end, Data data)
     {
         while (begin != end)
-	{
+	    {
             if (*begin == data)
                 return true;
             begin++;
@@ -175,7 +175,7 @@ namespace _ {
     bool contains(Iterator begin, Iterator end, std::pair<X, Y> p)
     {
         while (begin != end)
-	{
+	    {
             if ((*begin).first == p.first and (*begin).second == p.second)
                 return true;
             begin++;
@@ -206,19 +206,19 @@ namespace _ {
         typename Container::const_iterator first_begin = container1.begin(), second_begin = container2.begin();
 
         while (first_begin != container1.end() && second_begin != container2.end())
-	{
-            if (*first_begin == *second_begin)
 	    {
+            if (*first_begin == *second_begin)
+	        {
                 result.insert(result.end(), *first_begin);
                 first_begin++;
                 second_begin++;
             }
-	    else if (*first_begin > *second_begin)
-	    {
+	        else if (*first_begin > *second_begin)
+	        {
                 second_begin++;
             }
-	    else
-	    {
+	        else
+	        {
                 first_begin++;
             }
         }
@@ -248,38 +248,38 @@ namespace _ {
         typename Container::const_iterator first_begin = container1.begin(), second_begin = container2.begin();
 
         while (first_begin != container1.end() && second_begin != container2.end())
-	{
-            if(*first_begin == *second_begin)
 	    {
+            if(*first_begin == *second_begin)
+	        {
                 result.insert(result.end(), *first_begin);
                 first_begin++;
                 second_begin++;
             }
-	    else if (*first_begin > *second_begin)
-	    {
+	        else if (*first_begin > *second_begin)
+	        {
                 result.insert(result.end(), *second_begin);
                 second_begin++;
             }
-	    else
-	    {
+	        else
+	        {
                 result.insert(result.end(), *first_begin);
                 first_begin++;
             }
         }
         // container1 to end of result
         if (first_begin != container1.end())
-	{
-            while (first_begin != container1.end())
 	    {
+            while (first_begin != container1.end())
+	        {
                 result.insert(result.end(), *first_begin);
                 first_begin++;
             }
         }
-	else
-	{
+	    else
+	    {
             // otherwise add the rest of container2 to the result
             while (second_begin != container2.end())
-	    {
+	        {
                 result.insert(result.end(), *second_begin);
                 second_begin++;
             }
@@ -304,7 +304,7 @@ namespace _ {
         typename Container::iterator begin = container.begin();
         typename Container::iterator end = container.end();
         while (begin != end)
-	{
+	    {
             result[function(*begin)].push_back(*begin);
             begin++;
         }
@@ -316,9 +316,9 @@ namespace _ {
     {
         size_t count = 0;
         while (begin != end)
-	{
-            if(predicate(*begin))
 	    {
+            if(predicate(*begin))
+	        {
                 count++;
             }
             begin++;
@@ -333,7 +333,7 @@ namespace _ {
         std::map<decltype(function(
         *container.begin())), std::vector<typename Container::value_type>> grouped_by = group_by(container, function);
         for (auto &kv : grouped_by)
-	{
+	    {
             result[kv.first] = kv.second.size();
         }
         return result;
