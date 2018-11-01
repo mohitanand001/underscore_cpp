@@ -1,8 +1,8 @@
 # underscore_cpp
 Inspired by [underscore.js](https://underscorejs.org) <br>
 ## Table of contents:
-* [Implementations](./README.md#implementation-of)
-* [Setup and Build](./README.md#setup-and-build)
+* [Implementations](#implementation-of)
+* [Setup and Build](#setup-and-build)
 * [Usage](./README.md#usage)
 * [Contribution Guidelines](./README.md#contribution-guidelines)
 
