@@ -1,6 +1,8 @@
 # underscore_cpp
 Inspired by [underscore.js](https://underscorejs.org) <br>
+
 ## Table of contents:
+* [Why underscore_cpp](#why-underscore_cpp)
 * [Implementations](#implementation-of)
 * [Setup and Build](#setup-and-build)
 * [Usage](#usage)
@@ -11,6 +13,9 @@ Inspired by [underscore.js](https://underscorejs.org) <br>
 │ ││││ ││├┤ ├┬┘└─┐│  │ │├┬┘├┤     │  ├─┘├─┘
 └─┘┘└┘─┴┘└─┘┴└─└─┘└─┘└─┘┴└─└─┘────└─┘┴  ┴  
 </pre>
+## Why underscore_cpp
+underscore_cpp provides a range of generic functions for manipulting containers in c++. The library aims to help writing cleaner code, by providing functional programming helpers.
+
 ## Implementation of 
 - [x] each
 - [x] transform
