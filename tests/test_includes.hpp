@@ -5,25 +5,30 @@
 
 #include <iostream>
 
-inline void display(int x) {
+inline void display(int x)
+{
     std::cout << x << " ";
 }
 
-inline int incr(int x) {
+inline int incr(int x)
+{
     x = x + 1;
     return x;
 }
 
-inline int mulp(int x) {
+inline int mulp(int x)
+{
     return x * 10;
 }
 
-inline bool is_odd(int x) {
+inline bool is_odd(int x)
+{
     return x % 2 == 1;
 }
 
-inline int multiply(int x, int y) {
+inline int multiply(int x, int y)
+{
     return x * y;
 }
 
-#endif //TEST_INCLUDES_H
+#endif  // TEST_INCLUDES_H
