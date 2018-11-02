@@ -7,6 +7,10 @@ set(SOURCE_FILES
         src/underscore.hpp
         )
 
+set(FORMATTABLE_TEST_FILES
+        tests/testing.cpp
+        tests/test_includes.hpp)
+
 if (CMAKE_CXX_COMPILER_ID MATCHES Clang)
     add_compile_options(
             -Weverything
@@ -18,8 +22,41 @@ if (CMAKE_CXX_COMPILER_ID MATCHES Clang)
             -Wundefined-func-template)
 endif ()
 
-execute_process(COMMAND "clang-format -i src/underscore.hpp")
-execute_process(COMMAND "clang-format -i tests/testing.cpp")
+# check if clang-format is available
+find_program(
+  CLANG_FORMAT_EXE
+  NAMES "clang-format"
+  DOC "Path to clang-format executable"
+  )
+if(NOT CLANG_FORMAT_EXE)
+  message(STATUS "clang-format not found.")
+else()
+  message(STATUS "clang-format found: ${CLANG_FORMAT_EXE}")
+  set(DO_CLANG_FORMAT "${CLANG_FORMAT_EXE}" "-i -style=file")
+endif()
+
+# add custom target "clang-format-project-files"
+# If you want to do a clang-format on a build before committing code invoke
+# `make clang-format-project-files`
+function(prepend var prefix)
+  set(listVar "")
+
+  foreach(f ${ARGN})
+    list(APPEND listVar "${prefix}/${f}")
+  endforeach()
+
+  set(${var} "${listVar}" PARENT_SCOPE)
+endfunction() #prepend(<files to format>)
+
+if(CLANG_FORMAT_EXE)
+  prepend(FILES_TO_FORMAT ${CMAKE_CURRENT_SOURCE_DIR} ${SOURCE_FILES})
+  prepend(FILES_TO_FORMAT ${CMAKE_CURRENT_SOURCE_DIR} ${FORMATTABLE_TEST_FILES})
+
+  add_custom_target(
+    clang-format-project-files
+    COMMAND ${CLANG_FORMAT_EXE} -i -style=file ${FILES_TO_FORMAT}
+  )
+endif()
 
 # shared library libunderscore_shared
 add_library(underscore_shared SHARED ${SOURCE_FILES})
