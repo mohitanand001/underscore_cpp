@@ -18,6 +18,9 @@ if (CMAKE_CXX_COMPILER_ID MATCHES Clang)
             -Wundefined-func-template)
 endif ()
 
+execute_process(COMMAND "clang-format -i src/underscore.hpp")
+execute_process(COMMAND "clang-format -i tests/testing.cpp")
+
 # shared library libunderscore_shared
 add_library(underscore_shared SHARED ${SOURCE_FILES})
 
