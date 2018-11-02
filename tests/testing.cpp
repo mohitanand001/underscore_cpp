@@ -43,11 +43,11 @@ TEST_CASE("basic tests_main")
         auto mp_bool = _::group_by(vec, is_odd);
         std::cout << "group_by (is_odd)" << std::endl;
         for (const auto &it : mp_bool)
-            {
-                std::cout << (it.first) << ": ";
-                for (int j : (it.second)) std::cout << j << ", ";
-                std::cout << std::endl;
-            }
+        {
+            std::cout << (it.first) << ": ";
+            for (int j : (it.second)) std::cout << j << ", ";
+            std::cout << std::endl;
+        }
 
         REQUIRE(mp_bool.size() == 2);
 
@@ -65,11 +65,11 @@ TEST_CASE("basic tests_main")
         auto mp_int = _::group_by(vec, mulp);
         std::cout << "group_by (mulp)" << std::endl;
         for (const auto &it : mp_int)
-            {
-                std::cout << (it.first) << ": ";
-                for (int j : (it.second)) std::cout << j << ", ";
-                std::cout << std::endl;
-            }
+        {
+            std::cout << (it.first) << ": ";
+            for (int j : (it.second)) std::cout << j << ", ";
+            std::cout << std::endl;
+        }
         REQUIRE(mp_int.size() == 3);
         REQUIRE(mp_int[10][0] == 1);
         REQUIRE(mp_int[20][0] == 2);
@@ -84,9 +84,9 @@ TEST_CASE("basic tests_main")
         std::cout << std::endl << "count_by (is_odd)" << std::endl;
         auto count_by_bool = _::count_by(vec, is_odd);
         for (const auto &kv : count_by_bool)
-            {
-                std::cout << kv.first << " " << kv.second << std::endl;
-            }
+        {
+            std::cout << kv.first << " " << kv.second << std::endl;
+        }
         REQUIRE(count_by_bool.size() == 2);
         REQUIRE(count_by_bool[false] == 1);
         REQUIRE(count_by_bool[true] == 2);
@@ -94,9 +94,9 @@ TEST_CASE("basic tests_main")
         std::cout << std::endl << "count_by (mulp)" << std::endl;
         auto count_by_mulp = _::count_by(vec, mulp);
         for (const auto &kv : count_by_mulp)
-            {
-                std::cout << kv.first << " " << kv.second << std::endl;
-            }
+        {
+            std::cout << kv.first << " " << kv.second << std::endl;
+        }
         REQUIRE(count_by_mulp.size() == 3);
         REQUIRE(count_by_mulp[10] == 1);
         REQUIRE(count_by_mulp[20] == 1);
