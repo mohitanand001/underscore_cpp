@@ -4,6 +4,7 @@
 #include <cstddef>
 #include <iostream>
 #include <map>
+#include <set>
 #include <vector>
 
 namespace _
@@ -236,52 +237,36 @@ namespace _
     template <typename Container>
     Container set_union(Container container1, Container container2)
     {
+        if (container1.size() > 0 && container2.size() == 0)
+        {
+            return container1;
+        }
+        if (container2.size() > 0 && container1.size() == 0)
+        {
+            return container2;
+        }
+        if (container1 == container2)
+        {
+            return container1;
+        }
         Container result;
-
-        sort(container1.begin(), container1.end());
-        sort(container2.begin(), container2.end());
-
-        typename Container::const_iterator first_begin = container1.begin(),
-                                           second_begin = container2.begin();
-
-        while (first_begin != container1.end() && second_begin != container2.end())
-            {
-                if (*first_begin == *second_begin)
-                    {
-                        result.insert(result.end(), *first_begin);
-                        first_begin++;
-                        second_begin++;
-                    }
-                else if (*first_begin > *second_begin)
-                    {
-                        result.insert(result.end(), *second_begin);
-                        second_begin++;
-                    }
-                else
-                    {
-                        result.insert(result.end(), *first_begin);
-                        first_begin++;
-                    }
-            }
-        // if container2 done and container1 remains... just add the rest of
-        // container1 to end of result
-        if (first_begin != container1.end())
-            {
-                while (first_begin != container1.end())
-                    {
-                        result.insert(result.end(), *first_begin);
-                        first_begin++;
-                    }
-            }
-        else
-            {
-                // otherwise add the rest of container2 to the result
-                while (second_begin != container2.end())
-                    {
-                        result.insert(result.end(), *second_begin);
-                        second_begin++;
-                    }
-            }
+        std::set<typename Container::value_type> uniques;
+        for (auto elem : container1)
+        {
+            uniques.emplace(elem);
+	}
+        for (auto elem : container2)
+	{
+            uniques.emplace(elem);
+	}
+        for (auto elem : uniques)
+        {
+            result.push_back(elem);
+        }
+        if (result.size() > 0)
+        {
+            sort(result.begin(), result.end());
+        }
         return result;
     }
 

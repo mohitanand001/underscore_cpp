@@ -104,6 +104,71 @@ TEST_CASE("basic tests_main")
         std::cout << std::endl;
     }
 
+    SECTION("_::set_union section")
+    {
+        std::vector<int> unsorted_a = { 9, 9, 6, 6, 1}; // 3 uniques
+        std::vector<int> unsorted_b = { 4, 4, 1, 1, 2, 2 }; // 3 uniques, but 1 repeats
+        std::vector<int> unsorted_c = { 3, 5, 0, 7, 8 }; // missing numbers to complete [0-9]
+        std::vector<int> everybody_sorted = { 0, 1, 2, 3 ,4 ,5, 6, 7, 8, 9};
+        std::vector<int> unsorted_a_twin = { 9, 9, 6, 6, 1};
+        
+        auto sorted_a_b_union = _::set_union(unsorted_a, unsorted_b);
+        REQUIRE(sorted_a_b_union.size() == 5);
+
+        std::cout << "set_union" <<  std::endl;    
+        _::each(sorted_a_b_union, display);
+        std::cout << std::endl;
+
+        std::vector<int> empty_vector = {};
+        // test union with right side parameter empty
+        auto unsorted_a_empty_union = _::set_union(unsorted_a, empty_vector);
+        _::each(unsorted_a_empty_union, display);
+        std::cout << std::endl;        
+        REQUIRE(unsorted_a_empty_union != empty_vector);
+        REQUIRE(unsorted_a_empty_union.size() == unsorted_a.size());
+        REQUIRE(unsorted_a_empty_union == unsorted_a); // it does compare all elements
+
+        // test union with left side parameter empty
+        auto unsorted_b_empty_union = _::set_union(empty_vector, unsorted_b);
+        _::each(unsorted_b_empty_union, display);
+        std::cout << std::endl;
+        REQUIRE(unsorted_b_empty_union != empty_vector);
+        REQUIRE(unsorted_b_empty_union.size() == unsorted_b.size());
+        REQUIRE(unsorted_b_empty_union == unsorted_b); // it does compare all elementsOA        
+        std::cout << std::endl;
+
+        // test when two containers that have the same elements are attempted to be united
+        // if we tried to unite them, we'd get rid of the repeated elements
+        // if we detect they're the same we simply return the container as is, no elements
+        // are removed. TODO: discuss what to do in this case, maybe check what underscore_js does
+        auto not_united_twins = _::set_union(unsorted_a, unsorted_a_twin);
+        REQUIRE(not_united_twins == unsorted_a);
+        _::each(not_united_twins, display);
+        std::cout << std::endl;
+        REQUIRE(not_united_twins == unsorted_a_twin);
+        _::each(not_united_twins, display);
+        std::cout << std::endl;
+        
+        
+        // test joining all, we should have all numbers from 0 to 9
+        auto everybody_united = _::set_union(empty_vector, unsorted_a, unsorted_b, unsorted_c);
+        REQUIRE(everybody_united == everybody_sorted);
+        _::each(everybody_united, display);
+        std::cout << std::endl;
+        everybody_united = _::set_union(unsorted_a, empty_vector, unsorted_c, unsorted_b);
+        REQUIRE(everybody_united == everybody_sorted);
+        _::each(everybody_united, display);
+        std::cout << std::endl;
+
+        // a more challenging case, repeat some elements, with several empty vectors in between
+        everybody_united = _::set_union(unsorted_a, unsorted_a, unsorted_b, unsorted_c, empty_vector);
+        REQUIRE(everybody_united == everybody_sorted);
+        _::each(everybody_united, display);
+        std::cout << std::endl;
+
+	// TODO: Solve for a case with more than one empty_vector, won't build
+        // TODO: Test this with other data types than naive int
+    }
     // TODO: Way more test sections
 }
 
