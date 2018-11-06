@@ -263,10 +263,6 @@ namespace _
         {
             result.push_back(elem);
         }
-        if (result.size() > 0)
-        {
-            sort(result.begin(), result.end());
-        }
         return result;
     }
 
