@@ -4,6 +4,7 @@
 #include <cstddef>
 #include <iostream>
 #include <map>
+#include <set>
 #include <vector>
 
 namespace _
@@ -12,10 +13,10 @@ namespace _
     void each(Iterator begin, Iterator end, Function function)
     {
         while (begin != end)
-            {
-                function(*begin);
-                begin++;
-            }
+        {
+            function(*begin);
+            begin++;
+        }
     }
 
     template <typename Container, typename Function>
@@ -29,11 +30,11 @@ namespace _
                    Function function)
     {
         while (first_begin != first_end)
-            {
-                (*second_begin) = function(*first_begin);
-                first_begin++;
-                second_begin++;
-            }
+        {
+            (*second_begin) = function(*first_begin);
+            first_begin++;
+            second_begin++;
+        }
     }
 
     template <typename Container, typename Function>
@@ -42,12 +43,12 @@ namespace _
         Container result;
         typename Container::iterator first_begin, result_begin = result.begin();
         for (first_begin = container.begin(); first_begin != container.end(); ++first_begin)
+        {
+            if (function(*first_begin))
             {
-                if (function(*first_begin))
-                    {
-                        result.insert(result.end(), *first_begin);
-                    }
+                result.insert(result.end(), *first_begin);
             }
+        }
         return result;
     }
 
@@ -57,12 +58,12 @@ namespace _
         Container result;
         typename Container::iterator first_begin, result_begin = result.begin();
         for (first_begin = container.begin(); first_begin != container.end(); ++first_begin)
+        {
+            if (!function(*first_begin))
             {
-                if (!function(*first_begin))
-                    {
-                        result.insert(result.end(), *first_begin);
-                    }
+                result.insert(result.end(), *first_begin);
             }
+        }
         return result;
     }
 
@@ -70,13 +71,13 @@ namespace _
     Iterator find_if(Iterator begin, Iterator end, Predicate predicate)
     {
         while (begin != end)
+        {
+            if (predicate(*begin))
             {
-                if (predicate(*begin))
-                    {
-                        return begin;
-                    }
-                begin++;
+                return begin;
             }
+            begin++;
+        }
         return end;
     }
 
@@ -84,13 +85,13 @@ namespace _
     Iterator find_if_not(Iterator begin, Iterator end, Predicate predicate)
     {
         while (begin != end)
+        {
+            if (!predicate(*begin))
             {
-                if (!predicate(*begin))
-                    {
-                        return begin;
-                    }
-                begin++;
+                return begin;
             }
+            begin++;
+        }
         return end;
     }
 
@@ -98,10 +99,10 @@ namespace _
     bool every(Iterator begin, Iterator end, Predicate predicate)
     {
         while (begin != end)
-            {
-                if (predicate(*begin) == false) return false;
-                begin++;
-            }
+        {
+            if (predicate(*begin) == false) return false;
+            begin++;
+        }
         return true;
     }
 
@@ -109,11 +110,11 @@ namespace _
     bool any(Iterator begin, Iterator end, Predicate predicate)
     {
         while (begin != end)
-            {
-                if (predicate(*begin)) return true;
+        {
+            if (predicate(*begin)) return true;
 
-                begin++;
-            }
+            begin++;
+        }
         return false;
     }
 
@@ -126,9 +127,9 @@ namespace _
 
         for (typename Container::const_iterator it = ++container.begin(); it != container.end();
              ++it)
-            {
-                if ((*max) < (*it)) max = it;
-            }
+        {
+            if ((*max) < (*it)) max = it;
+        }
         return max;
     }
 
@@ -141,9 +142,9 @@ namespace _
 
         for (typename Container::const_iterator it = ++container.begin(); it != container.end();
              ++it)
-            {
-                if ((*min) > (*it)) min = it;
-            }
+        {
+            if ((*min) > (*it)) min = it;
+        }
         return min;
     }
 
@@ -160,10 +161,10 @@ namespace _
     bool contains(Iterator begin, Iterator end, Data data)
     {
         while (begin != end)
-            {
-                if (*begin == data) return true;
-                begin++;
-            }
+        {
+            if (*begin == data) return true;
+            begin++;
+        }
         return false;
     }
 
@@ -171,10 +172,10 @@ namespace _
     bool contains(Iterator begin, Iterator end, std::pair<X, Y> p)
     {
         while (begin != end)
-            {
-                if ((*begin).first == p.first and (*begin).second == p.second) return true;
-                begin++;
-            }
+        {
+            if ((*begin).first == p.first and (*begin).second == p.second) return true;
+            begin++;
+        }
         return false;
     }
 
@@ -202,22 +203,22 @@ namespace _
                                            second_begin = container2.begin();
 
         while (first_begin != container1.end() && second_begin != container2.end())
+        {
+            if (*first_begin == *second_begin)
             {
-                if (*first_begin == *second_begin)
-                    {
-                        result.insert(result.end(), *first_begin);
-                        first_begin++;
-                        second_begin++;
-                    }
-                else if (*first_begin > *second_begin)
-                    {
-                        second_begin++;
-                    }
-                else
-                    {
-                        first_begin++;
-                    }
+                result.insert(result.end(), *first_begin);
+                first_begin++;
+                second_begin++;
             }
+            else if (*first_begin > *second_begin)
+            {
+                second_begin++;
+            }
+            else
+            {
+                first_begin++;
+            }
+        }
         return result;
     }
 
@@ -234,61 +235,45 @@ namespace _
     }
 
     template <typename Container>
-    Container set_union(Container container1, Container container2)
+    Container set_union(const Container &container1, const Container &container2)
     {
+        if (container1.size() > 0 && container2.size() == 0)
+        {
+            return container1;
+        }
+        if (container2.size() > 0 && container1.size() == 0)
+        {
+            return container2;
+        }
+        if (container1 == container2)
+        {
+            return container1;
+        }
         Container result;
-
-        sort(container1.begin(), container1.end());
-        sort(container2.begin(), container2.end());
-
-        typename Container::const_iterator first_begin = container1.begin(),
-                                           second_begin = container2.begin();
-
-        while (first_begin != container1.end() && second_begin != container2.end())
-            {
-                if (*first_begin == *second_begin)
-                    {
-                        result.insert(result.end(), *first_begin);
-                        first_begin++;
-                        second_begin++;
-                    }
-                else if (*first_begin > *second_begin)
-                    {
-                        result.insert(result.end(), *second_begin);
-                        second_begin++;
-                    }
-                else
-                    {
-                        result.insert(result.end(), *first_begin);
-                        first_begin++;
-                    }
-            }
-        // if container2 done and container1 remains... just add the rest of
-        // container1 to end of result
-        if (first_begin != container1.end())
-            {
-                while (first_begin != container1.end())
-                    {
-                        result.insert(result.end(), *first_begin);
-                        first_begin++;
-                    }
-            }
-        else
-            {
-                // otherwise add the rest of container2 to the result
-                while (second_begin != container2.end())
-                    {
-                        result.insert(result.end(), *second_begin);
-                        second_begin++;
-                    }
-            }
+        std::set<typename Container::value_type> uniques;
+        for (auto elem : container1)
+        {
+            uniques.emplace(elem);
+        }
+        for (auto elem : container2)
+        {
+            uniques.emplace(elem);
+        }
+        for (auto elem : uniques)
+        {
+            result.push_back(elem);
+        }
+        if (result.size() > 0)
+        {
+            sort(result.begin(), result.end());
+        }
         return result;
     }
 
     // TODO: Do the above algorithm with all containers provided at once - instead
     // of recursively calling
     template <typename Container, typename... Containers>
-    Container set_union(Container container1, Container container2, Containers... others)
+    Container set_union(const Container &container1, const Container &container2, Containers... others)
     {
         return set_union(set_union(container1, container2), others...);
     }
@@ -304,10 +289,10 @@ namespace _
         typename Container::iterator begin = container.begin();
         typename Container::iterator end = container.end();
         while (begin != end)
-            {
-                result[function(*begin)].push_back(*begin);
-                begin++;
-            }
+        {
+            result[function(*begin)].push_back(*begin);
+            begin++;
+        }
         return result;
     }
 
@@ -316,13 +301,13 @@ namespace _
     {
         size_t count = 0;
         while (begin != end)
+        {
+            if (predicate(*begin))
             {
-                if (predicate(*begin))
-                    {
-                        count++;
-                    }
-                begin++;
+                count++;
             }
+            begin++;
+        }
         return count;
     }
 
@@ -335,9 +320,9 @@ namespace _
                  std::vector<typename Container::value_type>>
             grouped_by = group_by(container, function);
         for (auto &kv : grouped_by)
-            {
-                result[kv.first] = kv.second.size();
-            }
+        {
+            result[kv.first] = kv.second.size();
+        }
         return result;
     }
 }  // namespace _
