@@ -22,7 +22,7 @@ namespace _
     }
 
     template <typename Container, typename Predicate>
-    bool any(Container container, Predicate predicate)
+    bool any(const Container &container, Predicate predicate)
     {
         return any(container.begin(), container.end(), predicate);
     }
