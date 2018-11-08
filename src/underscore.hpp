@@ -114,7 +114,7 @@ namespace _
     }
 
     template <typename Container, typename Function>
-    void each(Container &container, Function function)
+    void each(const Container &container, Function function)
     {
         each(container.begin(), container.end(), function);
     }
@@ -128,6 +128,12 @@ namespace _
             begin++;
         }
         return true;
+    }
+
+    template <typename Container, typename Predicate>
+    bool every(const Container &container, Predicate predicate)
+    {
+        return every(container.begin(), container.end(), predicate);
     }
 
     template <typename Container, typename Function>
