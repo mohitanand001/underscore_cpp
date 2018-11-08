@@ -76,6 +76,12 @@ namespace _
         return count;
     }
 
+    template <typename Container, typename Predicate>
+    size_t count_by(const Container &container, Predicate predicate)
+    {
+        return count_by(container.begin(), container.end(), predicate);
+    }
+
     // forward declaration out of alphabetical order b/c count_by uses group_by
     template <typename Container, typename Function>
     auto group_by(Container &container, Function function)
