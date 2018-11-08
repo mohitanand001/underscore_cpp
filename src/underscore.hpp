@@ -38,7 +38,7 @@ namespace _
         return false;
     }
 
-    template <typename Iterator, typename Data, typename X, typename Y>
+    template <typename Iterator, typename X, typename Y>
     bool contains(Iterator begin, Iterator end, std::pair<X, Y> p)
     {
         while (begin != end)
