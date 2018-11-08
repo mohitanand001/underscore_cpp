@@ -170,7 +170,7 @@ TEST_CASE("basic tests_main")
         // TODO: Test this with other data types than naive int
     }
 
-    SECTION("_::intersect section")
+    SECTION("_::intersect, _::contains section")
     {
         const std::vector<int> a = { 5, 1, 3, 2, 4};
         const std::vector<int> b = { 9, 6, 5, 1, 2};
@@ -178,6 +178,10 @@ TEST_CASE("basic tests_main")
 
         auto a_b_intersection = _::intersect(a, b);
         REQUIRE(a_b_intersection.size() == 3);
+        REQUIRE(_::contains(a_b_intersection, 1));
+        REQUIRE(_::contains(a_b_intersection, 2));
+        REQUIRE(_::contains(a_b_intersection, 5));
+        REQUIRE(!_::contains(a_b_intersection, 9));
         REQUIRE(a_b_intersection[0] == 1);
         REQUIRE(a_b_intersection[1] == 2);
         REQUIRE(a_b_intersection[2] == 5);

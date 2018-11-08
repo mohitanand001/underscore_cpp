@@ -10,7 +10,7 @@
 namespace _
 {
     template <typename Iterator, typename Predicate>
-    bool any(Iterator begin, Iterator end, Predicate predicate)
+    bool any(Iterator begin, const Iterator end, Predicate predicate)
     {
         while (begin != end)
         {
@@ -28,7 +28,7 @@ namespace _
     }
 
     template <typename Iterator, typename Data>
-    bool contains(Iterator begin, Iterator end, const Data &data)
+    bool contains(Iterator begin, const Iterator end, const Data &data)
     {
         while (begin != end)
         {
@@ -104,7 +104,7 @@ namespace _
     }
 
     template <typename Iterator, typename Function>
-    void each(Iterator begin, Iterator end, Function function)
+    void each(Iterator begin, const Iterator end, Function function)
     {
         while (begin != end)
         {
@@ -120,7 +120,7 @@ namespace _
     }
 
     template <typename Iterator, typename Predicate>
-    bool every(Iterator begin, Iterator end, Predicate predicate)
+    bool every(Iterator begin, const Iterator end, Predicate predicate)
     {
         while (begin != end)
         {
