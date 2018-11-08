@@ -180,6 +180,12 @@ namespace _
         return end;
     }
 
+    template <typename Iterator, typename Container, typename Predicate>
+    Iterator find_if(const Container &container, Predicate predicate)
+    {
+        return find_if(container.begin(), container.end(), predicate);
+    }
+
     template <typename Iterator, typename Predicate>
     Iterator find_if_not(Iterator begin, Iterator end, Predicate predicate)
     {
@@ -192,6 +198,12 @@ namespace _
             begin++;
         }
         return end;
+    }
+
+    template <typename Iterator, typename Container, typename Predicate>
+    Iterator find_if_not(const Container &container, Predicate predicate)
+    {
+        return find_if_not(container.begin(), container.end(), predicate);
     }
 
     template <typename Container, typename Function>
