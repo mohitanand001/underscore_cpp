@@ -21,6 +21,12 @@ namespace _
         return false;
     }
 
+    template <typename Container, typename Predicate>
+    bool any(Container container, Predicate predicate)
+    {
+        return any(container.begin(), container.end(), predicate);
+    }
+
     template <typename Iterator, typename Data>
     bool contains(Iterator begin, Iterator end, Data data)
     {
@@ -78,7 +84,7 @@ namespace _
         }
         return result;
     }
-    
+
     template <typename Iterator, typename Function>
     void each(Iterator begin, Iterator end, Function function)
     {
