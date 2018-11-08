@@ -137,7 +137,7 @@ namespace _
     }
 
     template <typename Container, typename Function>
-    Container filter_accept(Container &container, Function function)
+    Container filter_accept(const Container &container, Function function)
     {
         Container result;
         typename Container::iterator first_begin, result_begin = result.begin();
@@ -152,7 +152,7 @@ namespace _
     }
 
     template <typename Container, typename Function>
-    Container filter_reject(Container &container, Function function)
+    Container filter_reject(const Container &container, Function function)
     {
         Container result;
         typename Container::iterator first_begin, result_begin = result.begin();
