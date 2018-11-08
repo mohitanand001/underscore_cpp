@@ -225,23 +225,24 @@ namespace _
     }
 
     template <typename Container>
-    Container intersect(Container container)
+    Container intersect(const Container &container)
     {
         return container;
     }
 
     template <typename Container>
-    Container intersect(Container container1, Container container2)
+    Container intersect(const Container &container1, const Container &container2)
     {
         Container result;
+        Container c1 = container1;
+        Container c2 = container2;
+        sort(c1.begin(), c1.end());
+        sort(c2.begin(), c2.end());
 
-        sort(container1.begin(), container1.end());
-        sort(container2.begin(), container2.end());
+        typename Container::const_iterator first_begin = c1.begin(),
+                second_begin = c2.begin();
 
-        typename Container::const_iterator first_begin = container1.begin(),
-                second_begin = container2.begin();
-
-        while (first_begin != container1.end() && second_begin != container2.end())
+        while (first_begin != c1.end() && second_begin != c2.end())
         {
             if (*first_begin == *second_begin)
             {
@@ -262,7 +263,7 @@ namespace _
     }
 
     template <typename Container, typename... Containers>
-    Container intersect(Container container1, Container container2, Containers... others)
+    Container intersect(const Container &container1, const Container &container2, Containers ... others)
     {
         return intersect(intersect(container1, container2), intersect(others...));
     }

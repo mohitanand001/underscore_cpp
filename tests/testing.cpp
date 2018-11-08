@@ -169,6 +169,34 @@ TEST_CASE("basic tests_main")
         // TODO: Solve for a case with more than one empty_vector, won't build
         // TODO: Test this with other data types than naive int
     }
+
+    SECTION("_::intersect section")
+    {
+        const std::vector<int> a = { 5, 1, 3, 2, 4};
+        const std::vector<int> b = { 9, 6, 5, 1, 2};
+        // 1, 2, 5, should be the intersection of a and b
+
+        auto a_b_intersection = _::intersect(a, b);
+        REQUIRE(a_b_intersection.size() == 3);
+        REQUIRE(a_b_intersection[0] == 1);
+        REQUIRE(a_b_intersection[1] == 2);
+        REQUIRE(a_b_intersection[2] == 5);
+
+        std::cout << std::endl << "intersect" << std::endl;
+        _::each(a, display);
+        std::cout << std::endl;
+        _::each(b, display);
+        std::cout << std::endl;
+        _::each(a_b_intersection, display);
+        std::cout << std::endl;
+
+        // make sure original containers did not mutate
+        REQUIRE(a[2] == 3);
+        REQUIRE(a[4] == 4);
+        REQUIRE(b[0] == 9);
+        REQUIRE(b[2] == 5);
+        REQUIRE(b[4] == 2);
+    }
     // TODO: Way more test sections
 }
 
