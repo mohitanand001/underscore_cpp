@@ -28,7 +28,7 @@ namespace _
     }
 
     template <typename Iterator, typename Data>
-    bool contains(Iterator begin, Iterator end, Data data)
+    bool contains(Iterator begin, Iterator end, const Data &data)
     {
         while (begin != end)
         {
@@ -38,8 +38,14 @@ namespace _
         return false;
     }
 
+    template <typename Container, typename Data>
+    bool contains(const Container &container, const Data &data)
+    {
+        return contains(container.begin(), container.end(), data);
+    }
+
     template <typename Iterator, typename X, typename Y>
-    bool contains(Iterator begin, Iterator end, std::pair<X, Y> p)
+    bool contains(Iterator begin, Iterator end, const std::pair<X, Y> &p)
     {
         while (begin != end)
         {
@@ -47,6 +53,12 @@ namespace _
             begin++;
         }
         return false;
+    }
+
+    template <typename Container, typename X, typename Y>
+    bool contains(const Container &container, const std::pair<X, Y> &p)
+    {
+        return contains(container.begin(), container.end(), p);
     }
 
     template <typename Iterator, typename Predicate>
