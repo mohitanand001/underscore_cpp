@@ -233,9 +233,9 @@ namespace _
     template <typename Container>
     Container intersect(const Container &container1, const Container &container2)
     {
-        Container result;
-        Container c1 = container1;
-        Container c2 = container2;
+        Container result, c1, c2;
+        c1 = container1;
+        c2 = container2;
         sort(c1.begin(), c1.end());
         sort(c2.begin(), c2.end());
 
@@ -371,4 +371,5 @@ namespace _
             second_begin++;
         }
     }
-}  // namespace _
+}  
+
